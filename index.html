@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+        <script defer src="./js/main.js"></script>
+    </head>
+    <body>
+        <header>
+            <header class="header">
+                <div class="container header__row">
+                    <a class="logo" href="#">
+                        <img src="./assets/img/logo.svg" alt="EnterntPay" />
+                    </a>
+
+                    <nav class="nav" data-nav>
+                        <a href="#about">About us</a>
+                        <a href="#connect">How to connect</a>
+                        <a href="#clients">Clients</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#contacts">Contacts</a>
+                    </nav>
+
+                    <div class="header__right">
+                        <div class="lang">
+                            <button class="lang__btn is-active" type="button">Ru</button>
+                            <button class="lang__btn" type="button">En</button>
+                        </div>
+
+                        <a class="btn btn--primary" href="#contacts"> Contact us </a>
+
+                        <button class="burger" type="button" aria-label="Open menu" data-burger>
+                            <span></span><span></span><span></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mnav" data-mnav>
+                    <div class="mnav__panel">
+                        <button class="mnav__close" type="button" aria-label="Close menu" data-close>
+                            ✕
+                        </button>
+                        <a href="#about">About us</a>
+                        <a href="#connect">How to connect</a>
+                        <a href="#clients">Clients</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#contacts">Contacts</a>
+                        <a class="btn btn--ghost" href="#contacts">Contact us</a>
+                    </div>
+                </div>
+            </header>
+        </header>
+
+        <main>
+            <section id="hero">
+                <div class="container hero__content">
+                    <p class="hero__subtitle">
+                        Simplifying payments. Opening markets.<br />
+                        Helping you grow.
+                    </p>
+                    <h1 class="hero__title">
+                        Your personal<br />
+                        payment assistant
+                    </h1>
+                    <div class="hero__media">
+                        <img src="./assets/img/main-card.png" alt="" class="hero__img" />
+                        <a class="btn-lottie hero__btn" href="#connect">
+                            <span id="startBtnAnim"></span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="stats" class="stats">
+                <div class="container stats__row">
+                    <div class="stats__item">
+                        <div class="stats__number">6</div>
+                        <div class="stats__text">
+                            <span>years</span>
+                            <p>on the online payments market</p>
+                        </div>
+                    </div>
+
+                    <div class="stats__item">
+                        <div class="stats__number">10</div>
+                        <div class="stats__text">
+                            <span>million</span>
+                            <p>transactions processed monthly</p>
+                        </div>
+                    </div>
+
+                    <div class="stats__item">
+                        <div class="stats__number">190</div>
+                        <div class="stats__text">
+                            <span>countries</span>
+                            <p>with full payment support</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solutions">
+                <div class="container">
+                    <div class="solutions__header">
+                        <h2 class="solutions__title">All payments in one solution</h2>
+                        <p class="solutions__subtitle">
+                            A unified system that simplifies payment acceptance, automates processes, and
+                            ensures stability at every step.
+                        </p>
+
+                        <div class="solutions__buttons">
+                            <a href="#" class="btn btn--primary">Start now!</a>
+                            <a href="#" class="btn btn--ghost">Contact us</a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="solutions__cards">
+                        <button class="slider-btn slider-btn--prev" data-sol-prev>←</button>
+
+                        <div class="card card--left" data-sol-track>
+                            <h3>Payments Without Borders</h3>
+                            <p>We operate in 190+ countries and regions...</p>
+                        </div>
+
+                        <div class="card card--center">
+                            <h3>Optimize your operations</h3>
+                            <p>We take care of routine tasks...</p>
+                        </div>
+
+                        <div class="card card--right">
+                            <h3>24/7 Support</h3>
+                            <p>Our support team responds instantly...</p>
+                        </div>
+
+                        <button class="slider-btn slider-btn--next" data-sol-next>→</button>
+                    </div> -->
+                    <div class="solutions__slider">
+                        <button class="slider-btn slider-btn--prev" data-sol-prev>←</button>
+
+                        <div class="solutions__cards" data-sol-track>
+                            <div class="card card--left">
+                                <h3>Payments Without Borders</h3>
+                                <p>We operate in 190+ countries and regions...</p>
+                            </div>
+
+                            <div class="card card--center">
+                                <h3>Optimize your operations</h3>
+                                <p>We take care of routine tasks...</p>
+                            </div>
+
+                            <div class="card card--right">
+                                <h3>24/7 Support</h3>
+                                <p>Our support team responds instantly...</p>
+                            </div>
+                        </div>
+
+                        <button class="slider-btn slider-btn--next" data-sol-next>→</button>
+                    </div>
+
+                    <div class="solutions__dots" data-sol-dots>
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="payments"></section>
+            <section id="integration"></section>
+            <section id="business"></section>
+            <section id="faq"></section>
+        </main>
+
+        <footer id="contacts"></footer>
+    </body>
+</html>
