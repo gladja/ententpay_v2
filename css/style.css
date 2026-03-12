@@ -22,6 +22,8 @@ body {
     margin: 0;
     background: #05040a;
     color: #fff;
+
+    overflow-x:hidden;
 }
 
 h1,
@@ -276,19 +278,32 @@ ul {
 
 .stats {
     padding: 80px 0 0;
+    overflow: hidden; /* ховаємо 4 блок */
 }
 
 .stats__row {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    gap: 40px;
+    gap: 80px;
+    /* transform: translateX(0);  */
+    /* will-change: transform; */
+    @media (max-width: 400px) {
+        gap: 40px;
+    
+    }
 }
 
 .stats__item {
     display: flex;
     align-items: flex-start;
     gap: 16px;
+    /* min-width: 300px;  */
+    flex: 0 0 calc((100% - 80px) / 3); 
+    
+    @media (max-width: 400px) {
+        flex: 0 0 calc((100% - 80px) / 2); 
+
+    }
 }
 
 .stats__number {
@@ -363,6 +378,8 @@ ul {
 .solutions__slider {
     position: relative;
     margin-top: 80px;
+
+   
 }
 
 .solutions__viewport {
@@ -373,9 +390,10 @@ ul {
     height: 400px;
     display: flex;
     gap: 32px;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     transition: transform 0.4s ease;
+    will-change: transform;
 }
 
 .card {
@@ -394,6 +412,44 @@ ul {
     opacity: 0.5;
     transform: scale(0.9);
     transition: all 0.4s ease;
+}
+
+.solutions__cards{
+position:relative;
+height:400px;
+}
+
+.card{
+position:absolute;
+top:50%;
+left:50%;
+
+transform-origin:center;
+
+transition:
+transform .6s cubic-bezier(.4,0,.2,1),
+opacity .4s ease;
+
+opacity:.5;
+}
+
+/* центральна */
+.card.center{
+transform:translate(-50%,-50%) scale(1);
+z-index:3;
+opacity:1;
+}
+
+/* ліва */
+.card.left{
+transform:translate(calc(-50% - 560px),-50%) scale(.9);
+z-index:1;
+}
+
+/* права */
+.card.right{
+transform:translate(calc(-50% + 560px),-50%) scale(.9);
+z-index:1;
 }
 
 .card.active {

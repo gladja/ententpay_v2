@@ -27,55 +27,73 @@ mnav?.addEventListener('click', (e)=>{ if(e.target === mnav) closeMenu(); });
 mnav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
 
+//stats
+const stats = document.querySelector(".stats");
+const statsRow = document.querySelector(".stats__row");
+
+let startScroll = null;
+
+window.addEventListener("scroll", () => {
+
+  const rect = stats.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // коли секція входить у viewport — фіксуємо старт
+  if (rect.top <= windowHeight && startScroll === null) {
+    startScroll = window.scrollY;
+  }
+
+  if (startScroll !== null) {
+
+    const distance = window.scrollY - startScroll;
+
+    const move = Math.max(0, Math.min(distance * 0.5, 320));
+
+    statsRow.style.transform = `translateX(-${move}px)`;
+
+  }
+
+});
+
+
 // slider
-const track = document.querySelector('[data-sol-track]')
-const prev = document.querySelector('[data-sol-prev]')
-const next = document.querySelector('[data-sol-next]')
+const cards = document.querySelectorAll('.card')
 const dots = document.querySelectorAll('.dot')
 
-let activeIndex = 1
+let order = [0,1,2]
 
-function updateCards(){
+function update(){
 
-const cards = track.querySelectorAll('.card')
-
-cards.forEach(card=>card.classList.remove('active'))
-
-cards[1].classList.add('active')
-
-dots.forEach(dot=>dot.classList.remove('active'))
-
-dots[activeIndex].classList.add('active')
-
-}
-
-updateCards()
-
-next.addEventListener('click',()=>{
-
-track.appendChild(track.firstElementChild)
-
-activeIndex++
-
-if(activeIndex > dots.length - 1){
-activeIndex = 0
-}
-
-updateCards()
-
+cards.forEach(c=>{
+c.classList.remove('left','center','right')
 })
 
-prev.addEventListener('click',()=>{
+cards[order[0]].classList.add('left')
+cards[order[1]].classList.add('center')
+cards[order[2]].classList.add('right')
 
-track.prepend(track.lastElementChild)
+dots.forEach(d=>d.classList.remove('active'))
+dots[order[1]].classList.add('active')
 
-activeIndex--
-
-if(activeIndex < 0){
-activeIndex = dots.length - 1
 }
 
-updateCards()
+update()
+
+cards.forEach(card=>{
+
+card.addEventListener('click',()=>{
+
+if(card.classList.contains('left')){
+order.unshift(order.pop())
+}
+
+if(card.classList.contains('right')){
+order.push(order.shift())
+}
+
+update()
+
+})
 
 })
 
@@ -83,26 +101,11 @@ dots.forEach((dot,i)=>{
 
 dot.addEventListener('click',()=>{
 
-while(activeIndex !== i){
-
-if(activeIndex < i){
-
-track.appendChild(track.firstElementChild)
-activeIndex++
-
-}else{
-
-track.prepend(track.lastElementChild)
-activeIndex--
-
+while(order[1] !== i){
+order.push(order.shift())
 }
 
-if(activeIndex > dots.length - 1) activeIndex = 0
-if(activeIndex < 0) activeIndex = dots.length - 1
-
-}
-
-updateCards()
+update()
 
 })
 
