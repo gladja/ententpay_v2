@@ -8,52 +8,52 @@
         <script defer src="./js/main.js"></script>
     </head>
     <body>
-        <header>
-            <header class="header">
-                <div class="container header__row">
-                    <a class="logo" href="#">
-                        <img src="./assets/img/logo.svg" alt="EnterntPay" />
-                    </a>
+        <div class="top-section">
+            <header>
+                <header class="header">
+                    <div class="container header__row">
+                        <a class="logo" href="#">
+                            <img src="./assets/img/logo.svg" alt="EnterntPay" />
+                        </a>
 
-                    <nav class="nav" data-nav>
-                        <a href="#about">About us</a>
-                        <a href="#connect">How to connect</a>
-                        <a href="#clients">Clients</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#contacts">Contacts</a>
-                    </nav>
+                        <nav class="nav" data-nav>
+                            <a href="#about">About us</a>
+                            <a href="#connect">How to connect</a>
+                            <a href="#clients">Clients</a>
+                            <a href="#faq">FAQ</a>
+                            <a href="#contacts">Contacts</a>
+                        </nav>
 
-                    <div class="header__right">
-                        <div class="lang">
-                            <button class="lang__btn is-active" type="button">Ru</button>
-                            <button class="lang__btn" type="button">En</button>
+                        <div class="header__right">
+                            <div class="lang">
+                                <button class="lang__btn is-active" type="button">Ru</button>
+                                <button class="lang__btn" type="button">En</button>
+                            </div>
+
+                            <a class="btn btn--primary none" href="#contacts"> Contact us </a>
+
+                            <button class="burger" type="button" aria-label="Open menu" data-burger>
+                                <span></span><span></span><span></span>
+                            </button>
                         </div>
-
-                        <a class="btn btn--primary" href="#contacts"> Contact us </a>
-
-                        <button class="burger" type="button" aria-label="Open menu" data-burger>
-                            <span></span><span></span><span></span>
-                        </button>
                     </div>
-                </div>
 
-                <div class="mnav" data-mnav>
-                    <div class="mnav__panel">
-                        <button class="mnav__close" type="button" aria-label="Close menu" data-close>
-                            ✕
-                        </button>
-                        <a href="#about">About us</a>
-                        <a href="#connect">How to connect</a>
-                        <a href="#clients">Clients</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#contacts">Contacts</a>
-                        <a class="btn btn--ghost" href="#contacts">Contact us</a>
+                    <div class="mnav" data-mnav>
+                        <div class="mnav__panel">
+                            <button class="mnav__close" type="button" aria-label="Close menu" data-close>
+                                ✕
+                            </button>
+                            <a href="#about">About us</a>
+                            <a href="#connect">How to connect</a>
+                            <a href="#clients">Clients</a>
+                            <a href="#faq">FAQ</a>
+                            <a href="#contacts">Contacts</a>
+                            <a class="btn btn--ghost" href="#contacts">Contact us</a>
+                        </div>
                     </div>
-                </div>
+                </header>
             </header>
-        </header>
 
-        <main>
             <section id="hero">
                 <div class="container hero__content">
                     <p class="hero__subtitle">
@@ -72,99 +72,103 @@
                     </div>
                 </div>
             </section>
+        </div>
 
-            <section id="stats" class="stats">
-                <div class="container stats__row">
-                    <div class="stats__item">
-                        <div class="stats__number">6</div>
-                        <div class="stats__text">
-                            <span>years</span>
-                            <p>on the online payments market</p>
+        <main>
+            <div class="main-section">
+                <section id="stats" class="stats">
+                    <div class="container stats__row">
+                        <div class="stats__item">
+                            <div class="stats__number">6</div>
+                            <div class="stats__text">
+                                <span>years</span>
+                                <p>on the online payments market</p>
+                            </div>
+                        </div>
+
+                        <div class="stats__item">
+                            <div class="stats__number">10</div>
+                            <div class="stats__text">
+                                <span>million</span>
+                                <p>transactions processed monthly</p>
+                            </div>
+                        </div>
+
+                        <div class="stats__item">
+                            <div class="stats__number">190</div>
+                            <div class="stats__text">
+                                <span>countries</span>
+                                <p>with full payment support</p>
+                            </div>
+                        </div>
+
+                        <div class="stats__item">
+                            <div class="stats__number">180</div>
+                            <div class="stats__text">
+                                <span>ways</span>
+                                <p>to accept and route payments</p>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="stats__item">
-                        <div class="stats__number">10</div>
-                        <div class="stats__text">
-                            <span>million</span>
-                            <p>transactions processed monthly</p>
+                <section class="solutions">
+                    <div class="container">
+                        <div class="solutions__header">
+                            <h2 class="solutions__title">All payments in one solution</h2>
+                            <p class="solutions__subtitle">
+                                A unified system that simplifies payment acceptance, automates processes, and
+                                ensures stability at every step.
+                            </p>
+
+                            <div class="solutions__buttons">
+                                <a href="#" class="btn btn--primary">Start now!</a>
+                                <a href="#" class="btn btn--ghost">Contact us</a>
+                            </div>
+                        </div>
+
+                        <div class="solutions__slider">
+                            <ul class="solutions__cards" data-sol-track>
+                                <li class="card card--left">
+                                    <h3 class="card__title">Payments Without Borders</h3>
+                                    <p class="card__text">
+                                        We operate in 190+ countries and regions: Europe, Latin America,
+                                        Canada, Oceania, Asia, and the Middle East. All with support for local
+                                        currencies and payment methods.
+                                    </p>
+                                </li>
+
+                                <li class="card card--center">
+                                    <h3 class="card__title">Optimize your operations</h3>
+                                    <p class="card__text">
+                                        We take care of routine tasks so you can focus on business growth
+                                    </p>
+                                    <ul class="card--center__list">
+                                        <li class="card--center__item">fast transaction processing</li>
+                                        <li class="card--center__item">instant confirmations</li>
+                                        <li class="card--center__item">flexible payout scenarios</li>
+                                        <li class="card--center__item">automation of key processes</li>
+                                    </ul>
+                                </li>
+
+                                <li class="card card--right">
+                                    <h3 class="card__title">24/7 Support</h3>
+                                    <p class="card__text">
+                                        Our support team responds instantly and resolves issues to keep your
+                                        payment operations running smoothly.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="solutions__dots" data-sol-dots>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
                         </div>
                     </div>
-
-                    <div class="stats__item">
-                        <div class="stats__number">190</div>
-                        <div class="stats__text">
-                            <span>countries</span>
-                            <p>with full payment support</p>
-                        </div>
-                    </div>
-
-                    <div class="stats__item">
-                        <div class="stats__number">180</div>
-                        <div class="stats__text">
-                            <span>ways</span>
-                            <p>to accept and route payments</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="solutions">
-                <div class="container">
-                    <div class="solutions__header">
-                        <h2 class="solutions__title">All payments in one solution</h2>
-                        <p class="solutions__subtitle">
-                            A unified system that simplifies payment acceptance, automates processes, and
-                            ensures stability at every step.
-                        </p>
-
-                        <div class="solutions__buttons">
-                            <a href="#" class="btn btn--primary">Start now!</a>
-                            <a href="#" class="btn btn--ghost">Contact us</a>
-                        </div>
-                    </div>
-
-                    <div class="solutions__slider">
-                        <ul class="solutions__cards" data-sol-track>
-                            <li class="card card--left">
-                                <h3 class="card__title">Payments Without Borders</h3>
-                                <p class="card__text">
-                                    We operate in 190+ countries and regions: Europe, Latin America, Canada,
-                                    Oceania, Asia, and the Middle East. All with support for local currencies
-                                    and payment methods.
-                                </p>
-                            </li>
-
-                            <li class="card card--center">
-                                <h3 class="card__title">Optimize your operations</h3>
-                                <p class="card__text">
-                                    We take care of routine tasks so you can focus on business growth
-                                </p>
-                                <ul class="card--center__list">
-                                    <li class="card--center__item">fast transaction processing</li>
-                                    <li class="card--center__item">instant confirmations</li>
-                                    <li class="card--center__item">flexible payout scenarios</li>
-                                    <li class="card--center__item">automation of key processes</li>
-                                </ul>
-                            </li>
-
-                            <li class="card card--right">
-                                <h3 class="card__title">24/7 Support</h3>
-                                <p class="card__text">
-                                    Our support team responds instantly and resolves issues to keep your
-                                    payment operations running smoothly.
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="solutions__dots" data-sol-dots>
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
             <section id="payments"></section>
             <section id="integration"></section>
