@@ -7,13 +7,14 @@ lottie.loadAnimation({
     path: "./assets/lottie/entent-main-button.json",
 });
 
-///////////////////////////header//////////////////////
+///////////////////////////burger//////////////////////
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
 
 function toggleMenu() {
-    mnav?.classList.toggle("is-open");
     document.body.classList.toggle("menu-open");
+    mnav?.classList.toggle("is-open");
+    burger?.classList.toggle("is-active");
 }
 
 burger?.addEventListener("click", toggleMenu);
