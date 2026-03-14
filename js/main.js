@@ -1,112 +1,92 @@
-
-
-
 /////////////////////animation btn//////////////////////
-
 lottie.loadAnimation({
-    container: document.getElementById('startBtnAnim'),
-    renderer: 'canvas',
+    container: document.getElementById("startBtnAnim"),
+    renderer: "canvas",
     loop: true,
     autoplay: true,
-    path: './assets/lottie/entent-main-button.json'
+    path: "./assets/lottie/entent-main-button.json",
 });
 
-
 ///////////////////////////header//////////////////////
+const burger = document.querySelector("[data-burger]");
+const mnav = document.querySelector("[data-mnav]");
 
-const burger = document.querySelector('[data-burger]');
-const mnav = document.querySelector('[data-mnav]');
-const closeBtn = document.querySelector('[data-close]');
+function toggleMenu() {
+    mnav?.classList.toggle("is-open");
+    document.body.classList.toggle("menu-open");
+}
 
-function openMenu(){ mnav?.classList.add('is-open'); }
-function closeMenu(){ mnav?.classList.remove('is-open'); }
+burger?.addEventListener("click", toggleMenu);
+mnav?.addEventListener("click", (e) => {
+    if (e.target === mnav) closeMenu();
+});
+mnav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", toggleMenu));
 
-burger?.addEventListener('click', openMenu);
-closeBtn?.addEventListener('click', closeMenu);
-mnav?.addEventListener('click', (e)=>{ if(e.target === mnav) closeMenu(); });
-mnav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-
-//stats
+///////////////////////////stats////////////////////////
 const stats = document.querySelector(".stats");
 const statsRow = document.querySelector(".stats__row");
 
 let startScroll = null;
 
 window.addEventListener("scroll", () => {
+    const rect = stats.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-  const rect = stats.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+    // коли секція входить у viewport — фіксуємо старт
+    if (rect.top <= windowHeight && startScroll === null) {
+        startScroll = window.scrollY;
+    }
 
-  // коли секція входить у viewport — фіксуємо старт
-  if (rect.top <= windowHeight && startScroll === null) {
-    startScroll = window.scrollY;
-  }
+    if (startScroll !== null) {
+        const distance = window.scrollY - startScroll;
 
-  if (startScroll !== null) {
+        const move = Math.max(0, Math.min(distance * 0.5, 320));
 
-    const distance = window.scrollY - startScroll;
-
-    const move = Math.max(0, Math.min(distance * 0.5, 320));
-
-    statsRow.style.transform = `translateX(-${move}px)`;
-
-  }
-
+        statsRow.style.transform = `translateX(-${move}px)`;
+    }
 });
 
-
 // slider
-const cards = document.querySelectorAll('.card')
-const dots = document.querySelectorAll('.dot')
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
 
-let order = [0,1,2]
+let order = [0, 1, 2];
 
-function update(){
+function update() {
+    cards.forEach((c) => {
+        c.classList.remove("left", "center", "right");
+    });
 
-cards.forEach(c=>{
-c.classList.remove('left','center','right')
-})
+    cards[order[0]].classList.add("left");
+    cards[order[1]].classList.add("center");
+    cards[order[2]].classList.add("right");
 
-cards[order[0]].classList.add('left')
-cards[order[1]].classList.add('center')
-cards[order[2]].classList.add('right')
-
-dots.forEach(d=>d.classList.remove('active'))
-dots[order[1]].classList.add('active')
-
+    dots.forEach((d) => d.classList.remove("active"));
+    dots[order[1]].classList.add("active");
 }
 
-update()
+update();
 
-cards.forEach(card=>{
+cards.forEach((card) => {
+    card.addEventListener("click", () => {
+        if (card.classList.contains("left")) {
+            order.unshift(order.pop());
+        }
 
-card.addEventListener('click',()=>{
+        if (card.classList.contains("right")) {
+            order.push(order.shift());
+        }
 
-if(card.classList.contains('left')){
-order.unshift(order.pop())
-}
+        update();
+    });
+});
 
-if(card.classList.contains('right')){
-order.push(order.shift())
-}
+dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+        while (order[1] !== i) {
+            order.push(order.shift());
+        }
 
-update()
-
-})
-
-})
-
-dots.forEach((dot,i)=>{
-
-dot.addEventListener('click',()=>{
-
-while(order[1] !== i){
-order.push(order.shift())
-}
-
-update()
-
-})
-
-})
+        update();
+    });
+});

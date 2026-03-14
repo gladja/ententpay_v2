@@ -2,56 +2,70 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Title</title>
-        <link rel="stylesheet" href="./css/style.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
         <script defer src="./js/main.js"></script>
+        <link rel="stylesheet" href="./css/style.css" />
     </head>
     <body>
         <div class="top-section">
-            <header>
-                <header class="header">
-                    <div class="container header__row">
-                        <a class="logo" href="#">
-                            <img src="./assets/img/logo.svg" alt="EnterntPay" />
-                        </a>
+            <header class="header">
+                <div class="container header__row">
+                    <a class="logo" href="#">
+                        <img src="./assets/img/logo.svg" alt="EnterntPay" />
+                    </a>
 
-                        <nav class="nav" data-nav>
-                            <a href="#about">About us</a>
-                            <a href="#connect">How to connect</a>
-                            <a href="#clients">Clients</a>
-                            <a href="#faq">FAQ</a>
-                            <a href="#contacts">Contacts</a>
-                        </nav>
+                    <nav class="nav" data-nav>
+                        <a class="hover-text" href="#about">About us</a>
+                        <a class="hover-text" href="#connect">How to connect</a>
+                        <a class="hover-text" href="#clients">Clients</a>
+                        <a class="hover-text" href="#faq">FAQ</a>
+                        <a class="hover-text" href="#contacts">Contacts</a>
+                    </nav>
 
-                        <div class="header__right">
+                    <div class="header__right">
+                        <div class="lang">
+                            <button class="lang__btn is-active" type="button">Ru</button>
+                            <button class="lang__btn" type="button">En</button>
+                        </div>
+
+                        <a class="btn btn--primary none" href="#contacts"> Contact us </a>
+
+                        <button class="burger" type="button" aria-label="Open menu" data-burger>
+                            <span></span><span></span><span></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mnav" data-mnav>
+                    <ul class="mnav__panel">
+                        <li>
+                            <a class="hover-text" href="#about">About us</a>
+                        </li>
+                        <li>
+                            <a class="hover-text" href="#connect">How to connect</a>
+                        </li>
+                        <li>
+                            <a class="hover-text" href="#clients">Clients</a>
+                        </li>
+                        <li>
+                            <a class="hover-text" href="#faq">FAQ</a>
+                        </li>
+                        <li>
+                            <a class="hover-text" href="#contacts">Contacts</a>
+                        </li>
+                        <li>
+                            <a class="btn btn--primary" href="#contacts">Contact us</a>
+                        </li>
+                        <li>
                             <div class="lang">
                                 <button class="lang__btn is-active" type="button">Ru</button>
                                 <button class="lang__btn" type="button">En</button>
                             </div>
-
-                            <a class="btn btn--primary none" href="#contacts"> Contact us </a>
-
-                            <button class="burger" type="button" aria-label="Open menu" data-burger>
-                                <span></span><span></span><span></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="mnav" data-mnav>
-                        <div class="mnav__panel">
-                            <button class="mnav__close" type="button" aria-label="Close menu" data-close>
-                                ✕
-                            </button>
-                            <a href="#about">About us</a>
-                            <a href="#connect">How to connect</a>
-                            <a href="#clients">Clients</a>
-                            <a href="#faq">FAQ</a>
-                            <a href="#contacts">Contacts</a>
-                            <a class="btn btn--ghost" href="#contacts">Contact us</a>
-                        </div>
-                    </div>
-                </header>
+                        </li>
+                    </ul>
+                </div>
             </header>
 
             <section id="hero">
