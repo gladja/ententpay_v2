@@ -7,7 +7,7 @@ lottie.loadAnimation({
     path: "./assets/lottie/entent-main-button.json",
 });
 
-///////////////////////////burger//////////////////////
+///////////////////////////burger menu//////////////////////
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
 
