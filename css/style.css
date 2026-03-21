@@ -31,6 +31,10 @@
 }
 
 /*////////////////global style////////////////*/
+* {
+    box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -98,9 +102,9 @@ body {
 }
 
 /* background */
-body {
-    background-image: url(../assets/img/ent-land-mob-v3.png);
-    background-position: center -1px;
+.hero {
+    background-image: url(../assets/img/ent-land-mob-v31.png);
+    background-position: center -30px;
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -363,8 +367,8 @@ body.menu-open {
     position: relative;
     text-align: center;
 
-    padding: 30px 0 150px;
-
+    padding: 30px 0 230px;
+    /* +80 */
     @media (min-width: 980px) {
         padding: 70px 0 24px;
     }
@@ -408,12 +412,12 @@ body.menu-open {
     width: min(305px, 92vw);
     height: min(240px, 50vw);
     margin: 0 auto;
-    background: url(../assets/img/cards.png) center/cover no-repeat;
+    background: url(../assets/img/card-m.webp) center/cover no-repeat;
 
     @media (min-width: 980px) {
         width: min(900px, 92vw);
         height: min(260px, 50vw);
-        background: url(../assets/img/main-card.png) center/cover no-repeat;
+        background: url(../assets/img/card.webp) center/cover no-repeat;
 
         align-items: center;
     }
@@ -456,7 +460,7 @@ body.menu-open {
 
 /*///////////////stats///////////////////*/
 .stats {
-    padding: 80px 0 0;
+    /* padding: 80px 0 0; */
     overflow: hidden;
     /* ховаємо 4 блок */
 
@@ -527,12 +531,12 @@ body.menu-open {
 /*///////////////////////solutions/////////////////////*/
 /* solutions header */
 .solutions {
-    padding: 100px 0;
+    padding: 100px 0 0;
     text-align: center;
     overflow: hidden;
 
     @media (min-width: 980px) {
-        padding: 100px 0;
+        padding: 100px 0 0;
     }
 }
 
@@ -600,7 +604,7 @@ body.menu-open {
         0 12px 40px rgba(120, 90, 255, 0.45); */
 }
 
-/* slider */
+/* solutions slider */
 .solutions__slider {
     position: relative;
     margin-top: 23px;
@@ -630,8 +634,10 @@ body.menu-open {
 }
 
 .card {
-    width: 290px;
-    height: 380px;
+    /* width: 290px; */
+    width: 330px;
+    /* height: 380px; */
+    height: 420px;
     text-align: left;
     padding: 24px 20px;
     border-radius: 28px;
@@ -657,8 +663,10 @@ body.menu-open {
 
     @media (min-width: 980px) {
         flex: 0 0 460px;
-        width: 460px;
-        height: 340px;
+        /* width: 460px; */
+        width: 550px;
+        /* height: 340px; */
+        height: 400px;
         padding: 32px 40px;
     }
 }
@@ -819,11 +827,216 @@ body.menu-open {
     border-radius: 4px;
     border: 2px solid #6c5cff;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-slow);
 
     &.active {
         width: 18px;
         height: 18px;
-        background: #6c5cff;
+        background: var(--color-primary-hover);
     }
+}
+
+/* ///////////////////////payments slider ///////////////////////*/
+.pm3 {
+    position: relative;
+    padding-top: 60px;
+    /* overflow: hidden; */
+
+    padding-bottom: 100px;
+
+    @media (min-width: 980px) {
+        padding-top: 180px;
+    }
+}
+
+.pm3-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: center;
+
+    @media (min-width: 980px) {
+        gap: 40px;
+        grid-template-columns: 360px 1fr;
+    }
+}
+
+.pm3-bg {
+    /* width: 354px; */
+    height: 643px;
+    padding: 34px 28px;
+    border-radius: 28px;
+    background: url("../assets/img/slidier-bg-m.png") left/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    @media (min-width: 980px) {
+        width: 780px;
+        height: 360px;
+        padding: 68px 50px 47px;
+        background: url("../assets/img/slidier-bg.png") center/cover no-repeat;
+    }
+}
+
+.pm3-bg__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    @media (min-width: 980px) {
+        font-size: 40px;
+    }
+}
+
+.pm3-bg__text {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.2;
+    width: 336px;
+    margin-bottom: 430px;
+
+    @media (min-width: 980px) {
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 0;
+    }
+}
+
+/* payment slider */
+.pm3-slider {
+    /* width: 585px; */
+    overflow: hidden;
+    position: relative;
+    left: 24px;
+    bottom: 470px;
+
+    @media (min-width: 980px) {
+        /* desktop 2 cards visible */
+        width: 620px;
+        left: 80px;
+        bottom: 0;
+    }
+}
+
+.pm3-viewport {
+    overflow: hidden;
+}
+
+.pm3-track {
+    display: flex;
+    align-items: center;
+    transition: transform var(--transition-slow);
+}
+
+.pm3-card {
+    flex: 0 0 290px;
+    height: 360px;
+    padding: 30px 25px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, #5f3cff, #3b1f90);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    opacity: 0.6;
+    transform: scale(0.9);
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+
+    @media (min-width: 980px) {
+        flex: 0 0 300px;
+        height: 360px;
+        padding: 30px;
+    }
+
+    &:first-child {
+        background: url(../assets/img/pay-card-01.png) center/contain no-repeat;
+
+        .pm3-card__text {
+            width: 200px;
+        }
+    }
+
+    &:nth-child(2) {
+        background: url(../assets/img/pay-card-02.png) center/contain no-repeat;
+    }
+
+    &:nth-child(3) {
+        background: url(../assets/img/pay-card-03.png) center/contain no-repeat;
+
+        .pm3-card__title {
+            width: 200px;
+        }
+    }
+
+    &:nth-child(4) {
+        background: url(../assets/img/pay-card-04.png) center/contain no-repeat;
+        .pm3-card__title {
+            width: 200px;
+        }
+    }
+
+    &:nth-child(5) {
+        background: url(../assets/img/pay-card-05.png) center/contain no-repeat;
+        .pm3-card__title {
+            width: 210px;
+        }
+    }
+
+    &:nth-child(6) {
+        background: url(../assets/img/pay-card-06.png) center/contain no-repeat;
+    }
+}
+
+.pm3-card.is-center {
+    opacity: 1;
+    margin-right: 15px;
+    transform: scale(1);
+}
+
+.pm3-card__title {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.pm3-card__text {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    line-height: 1.2;
+    margin-top: 10px;
+}
+
+/* slider  dots */
+.pm3-dots {
+    width: fit-content;
+    height: 42px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: 52px;
+
+    @media (min-width: 980px) {
+        margin-left: 0;
+    }
+}
+
+.pm3-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    border: 2px solid #6c5cff;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    
+    &.active {
+        width: 18px;
+        height: 18px;
+        background: var(--color-primary-hover);
+    }    
 }

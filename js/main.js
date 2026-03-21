@@ -91,3 +91,39 @@ dots.forEach((dot, i) => {
         update();
     });
 });
+
+// payments slider
+document.addEventListener("DOMContentLoaded", () => {
+
+    const track = document.querySelector(".pm3-track");
+    const cards = document.querySelectorAll(".pm3-card");
+    const dots = document.querySelectorAll(".pm3-dot");
+
+    if (!track || !cards.length || !dots.length) return;
+
+    let index = 0;
+
+    function updateSlider() {
+
+        const gap = parseInt(getComputedStyle(track).gap) || 0;
+        const cardWidth = cards[0].offsetWidth + gap;
+
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+        cards.forEach(c => c.classList.remove("is-center"));
+        cards[index].classList.add("is-center");
+
+        dots.forEach(d => d.classList.remove("active"));
+        dots[index].classList.add("active");
+    }
+
+    updateSlider();
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+            index = i;
+            updateSlider();
+        });
+    });
+
+});
