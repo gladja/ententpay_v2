@@ -47,7 +47,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// slider
+///////////////////////////slider///////////////////////////
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".dot");
 
@@ -92,7 +92,7 @@ dots.forEach((dot, i) => {
     });
 });
 
-// payments slider
+///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.querySelector(".pm3-track");
@@ -103,11 +103,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index = 0;
 
-    function updateSlider() {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
 
+    function getCardWidth() {
         const gap = parseInt(getComputedStyle(track).gap) || 0;
-        const cardWidth = cards[0].offsetWidth + gap;
+        return cards[0].offsetWidth + gap;
+    }
 
+    function updateSlider(animate = true) {
+        const cardWidth = getCardWidth();
+
+        track.style.transition = animate ? "transform 0.4s ease" : "none";
         track.style.transform = `translateX(-${index * cardWidth}px)`;
 
         cards.forEach(c => c.classList.remove("is-center"));
@@ -119,11 +127,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateSlider();
 
+    // 🔥 DOTS
     dots.forEach((dot, i) => {
         dot.addEventListener("click", () => {
             index = i;
             updateSlider();
         });
     });
+
+    // -------------------
+    // 🖱️ DRAG / SWIPE
+    // -------------------
+    function startDrag(e) {
+        isDragging = true;
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        track.style.transition = "none";
+    }
+
+    function moveDrag(e) {
+        if (!isDragging) return;
+
+        currentX = e.touches ? e.touches[0].clientX : e.clientX;
+        const diff = currentX - startX;
+
+        const cardWidth = getCardWidth();
+        const baseTranslate = -index * cardWidth;
+
+        track.style.transform = `translateX(${baseTranslate + diff}px)`;
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        const diff = currentX - startX;
+        const threshold = 50; // мінімальний свайп
+
+        if (diff < -threshold && index < cards.length - 1) {
+            index++;
+        } else if (diff > threshold && index > 0) {
+            index--;
+        }
+
+        updateSlider();
+    }
+
+    // 🖱️ mouse
+    track.addEventListener("mousedown", startDrag);
+    window.addEventListener("mousemove", moveDrag);
+    window.addEventListener("mouseup", endDrag);
+
+    // 📱 touch
+    track.addEventListener("touchstart", startDrag);
+    track.addEventListener("touchmove", moveDrag);
+    track.addEventListener("touchend", endDrag);
 
 });

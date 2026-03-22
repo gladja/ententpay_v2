@@ -866,7 +866,7 @@ body.menu-open {
     height: 643px;
     padding: 34px 28px;
     border-radius: 28px;
-    background: url("../assets/img/slidier-bg-m.png") left/cover no-repeat;
+    background: url("../assets/img/slidier-bg-m.webp") left/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -876,7 +876,7 @@ body.menu-open {
         width: 780px;
         height: 360px;
         padding: 68px 50px 47px;
-        background: url("../assets/img/slidier-bg.png") center/cover no-repeat;
+        background: url("../assets/img/slidier-bg.webp") center/cover no-repeat;
     }
 }
 
@@ -953,7 +953,7 @@ body.menu-open {
     }
 
     &:first-child {
-        background: url(../assets/img/pay-card-01.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-01.webp) center/contain no-repeat;
 
         .pm3-card__text {
             width: 200px;
@@ -961,11 +961,11 @@ body.menu-open {
     }
 
     &:nth-child(2) {
-        background: url(../assets/img/pay-card-02.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-02.webp) center/contain no-repeat;
     }
 
     &:nth-child(3) {
-        background: url(../assets/img/pay-card-03.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-03.webp) center/contain no-repeat;
 
         .pm3-card__title {
             width: 200px;
@@ -973,21 +973,21 @@ body.menu-open {
     }
 
     &:nth-child(4) {
-        background: url(../assets/img/pay-card-04.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-04.webp) center/contain no-repeat;
         .pm3-card__title {
             width: 200px;
         }
     }
 
     &:nth-child(5) {
-        background: url(../assets/img/pay-card-05.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-05.webp) center/contain no-repeat;
         .pm3-card__title {
             width: 210px;
         }
     }
 
     &:nth-child(6) {
-        background: url(../assets/img/pay-card-06.png) center/contain no-repeat;
+        background: url(../assets/img/pay-card-06.webp) center/contain no-repeat;
     }
 }
 
