@@ -50,47 +50,96 @@ window.addEventListener("scroll", () => {
 ///////////////////////////slider///////////////////////////
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".dot");
-
+ 
 let order = [0, 1, 2];
-
+ 
 function update() {
     cards.forEach((c) => {
         c.classList.remove("left", "center", "right");
     });
-
+ 
     cards[order[0]].classList.add("left");
     cards[order[1]].classList.add("center");
     cards[order[2]].classList.add("right");
-
+ 
     dots.forEach((d) => d.classList.remove("active"));
     dots[order[1]].classList.add("active");
 }
-
+ 
 update();
-
+ 
 cards.forEach((card) => {
     card.addEventListener("click", () => {
         if (card.classList.contains("left")) {
             order.unshift(order.pop());
         }
-
+ 
         if (card.classList.contains("right")) {
             order.push(order.shift());
         }
-
+ 
         update();
     });
 });
-
+ 
 dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
         while (order[1] !== i) {
             order.push(order.shift());
         }
-
+ 
         update();
     });
 });
+ 
+// drag / swipe
+(function () {
+    const solTrack = document.querySelector("[data-sol-track]");
+    if (!solTrack) return;
+ 
+    let solStartX = 0;
+    let solCurrentX = 0;
+    let solDragging = false;
+ 
+    function solStartDrag(e) {
+        solDragging = true;
+        solStartX = e.touches ? e.touches[0].clientX : e.clientX;
+        solCurrentX = solStartX;
+    }
+ 
+    function solMoveDrag(e) {
+        if (!solDragging) return;
+        solCurrentX = e.touches ? e.touches[0].clientX : e.clientX;
+    }
+ 
+    function solEndDrag() {
+        if (!solDragging) return;
+        solDragging = false;
+ 
+        const diff = solCurrentX - solStartX;
+        const threshold = 50;
+ 
+        if (diff < -threshold) {
+            // свайп вліво — наступна картка
+            order.push(order.shift());
+            update();
+        } else if (diff > threshold) {
+            // свайп вправо — попередня картка
+            order.unshift(order.pop());
+            update();
+        }
+    }
+ 
+    // mouse
+    solTrack.addEventListener("mousedown", solStartDrag);
+    window.addEventListener("mousemove", solMoveDrag);
+    window.addEventListener("mouseup", solEndDrag);
+ 
+    // touch
+    solTrack.addEventListener("touchstart", solStartDrag, { passive: true });
+    solTrack.addEventListener("touchmove", solMoveDrag, { passive: true });
+    solTrack.addEventListener("touchend", solEndDrag);
+})();
 
 ///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
