@@ -292,8 +292,9 @@ body {
 
 /* mobile menu */
 body.menu-open {
+    position: fixed;
     overflow: hidden;
-    height: 100vh;
+    width: 100%;
 }
 
 .mnav {
@@ -328,7 +329,7 @@ body.menu-open {
     align-items: center;
     gap: 50px;
     padding: 70px 0 70px;
-    height: 100%;
+    height: 110vh;
     font-size: 32px;
     font-weight: 500;
 
