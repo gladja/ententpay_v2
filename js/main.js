@@ -50,75 +50,75 @@ window.addEventListener("scroll", () => {
 ///////////////////////////slider///////////////////////////
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".dot");
- 
+
 let order = [0, 1, 2];
- 
+
 function update() {
     cards.forEach((c) => {
         c.classList.remove("left", "center", "right");
     });
- 
+
     cards[order[0]].classList.add("left");
     cards[order[1]].classList.add("center");
     cards[order[2]].classList.add("right");
- 
+
     dots.forEach((d) => d.classList.remove("active"));
     dots[order[1]].classList.add("active");
 }
- 
+
 update();
- 
+
 cards.forEach((card) => {
     card.addEventListener("click", () => {
         if (card.classList.contains("left")) {
             order.unshift(order.pop());
         }
- 
+
         if (card.classList.contains("right")) {
             order.push(order.shift());
         }
- 
+
         update();
     });
 });
- 
+
 dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
         while (order[1] !== i) {
             order.push(order.shift());
         }
- 
+
         update();
     });
 });
- 
+
 // drag / swipe
 (function () {
     const solTrack = document.querySelector("[data-sol-track]");
     if (!solTrack) return;
- 
+
     let solStartX = 0;
     let solCurrentX = 0;
     let solDragging = false;
- 
+
     function solStartDrag(e) {
         solDragging = true;
         solStartX = e.touches ? e.touches[0].clientX : e.clientX;
         solCurrentX = solStartX;
     }
- 
+
     function solMoveDrag(e) {
         if (!solDragging) return;
         solCurrentX = e.touches ? e.touches[0].clientX : e.clientX;
     }
- 
+
     function solEndDrag() {
         if (!solDragging) return;
         solDragging = false;
- 
+
         const diff = solCurrentX - solStartX;
         const threshold = 50;
- 
+
         if (diff < -threshold) {
             // свайп вліво — наступна картка
             order.push(order.shift());
@@ -129,12 +129,12 @@ dots.forEach((dot, i) => {
             update();
         }
     }
- 
+
     // mouse
     solTrack.addEventListener("mousedown", solStartDrag);
     window.addEventListener("mousemove", solMoveDrag);
     window.addEventListener("mouseup", solEndDrag);
- 
+
     // touch
     solTrack.addEventListener("touchstart", solStartDrag, { passive: true });
     solTrack.addEventListener("touchmove", solMoveDrag, { passive: true });
@@ -143,7 +143,6 @@ dots.forEach((dot, i) => {
 
 ///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
-
     const track = document.querySelector(".pm3-track");
     const cards = document.querySelectorAll(".pm3-card");
     const dots = document.querySelectorAll(".pm3-dot");
@@ -167,10 +166,10 @@ document.addEventListener("DOMContentLoaded", () => {
         track.style.transition = animate ? "transform 0.4s ease" : "none";
         track.style.transform = `translateX(-${index * cardWidth}px)`;
 
-        cards.forEach(c => c.classList.remove("is-center"));
+        cards.forEach((c) => c.classList.remove("is-center"));
         cards[index].classList.add("is-center");
 
-        dots.forEach(d => d.classList.remove("active"));
+        dots.forEach((d) => d.classList.remove("active"));
         dots[index].classList.add("active");
     }
 
@@ -231,5 +230,79 @@ document.addEventListener("DOMContentLoaded", () => {
     track.addEventListener("touchstart", startDrag);
     track.addEventListener("touchmove", moveDrag);
     track.addEventListener("touchend", endDrag);
-
 });
+
+(function () {
+    const canvas = document.querySelector(".business__canvas");
+    const bg = document.querySelector(".business__bg");
+    const items = document.querySelectorAll(".business__item");
+    if (!canvas || !bg || !items.length) return;
+
+    const ctx = canvas.getContext("2d");
+    let startTime = null;
+
+    function resize() {
+        canvas.width = bg.offsetWidth;
+        canvas.height = bg.offsetHeight;
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    function tick(ts) {
+        if (!startTime) startTime = ts;
+        const t = (ts - startTime) / 9000;
+        const angle = t * Math.PI * 2;
+
+        // Вісімка
+        const dy = Math.sin(angle) * 0.4;
+        const dx = Math.sin(angle * 2) * 0.15;
+
+        const W = canvas.width;
+        const H = canvas.height;
+
+        // Центр градієнта рухається по вісімці
+        const cx = W / 2 + dx * W;
+        const cy = H / 2 + dy * H;
+
+        ctx.clearRect(0, 0, W, H);
+
+        items.forEach((item) => {
+            const bgRect = bg.getBoundingClientRect();
+            const itemRect = item.getBoundingClientRect();
+
+            // Позиція картки відносно canvas
+            const x = itemRect.left - bgRect.left;
+            const y = itemRect.top - bgRect.top;
+            const w = itemRect.width;
+            const h = itemRect.height;
+
+            // border-radius залежно від розміру екрану
+            const r = window.innerWidth <= 768 ? 16 : 24;
+
+            // Обрізаємо по формі картки
+            ctx.save();
+            ctx.beginPath();
+            ctx.roundRect(x, y, w, h, r);
+            ctx.clip();
+
+            // Єдиний градієнт відносно всього canvas
+            const grad = ctx.createLinearGradient(cx - W * 0.6, cy - H * 0.6, cx + W * 0.6, cy + H * 0.6);
+            // grad.addColorStop(0, '#FC6701');
+            // grad.addColorStop(1, '#9B6FE8');
+            grad.addColorStop(0, "#fc650188"); // оранжевий
+            // grad.addColorStop(0.35, "#DE65F8"); // рожевий
+            grad.addColorStop(0.65, "#5f53bd7c"); // фіолетовий
+            grad.addColorStop(1, "#13044C"); // темно-синій
+
+            ctx.fillStyle = grad;
+            ctx.fillRect(x, y, w, h);
+
+            ctx.restore();
+        });
+
+        requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+})();
