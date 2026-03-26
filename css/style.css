@@ -1059,14 +1059,14 @@ body.menu-open {
     padding: 90px 0 0;
     height: 750px;
     text-align: center;
-    background: url(../assets/img/register-1-m.png) center/cover no-repeat;
+    background: url(../assets/img/integration-m.webp) center/cover no-repeat;
     /* background-size: 393px; */
 
     @media (min-width: 980px) {
         margin: 110px 0 0;
         padding: 134px 0 0;
         height: 750px;
-        background: url(../assets/img/register-1.png) center/contain no-repeat;
+        background: url(../assets/img/integration.webp) center/contain no-repeat;
     }
 }
 
@@ -1095,7 +1095,7 @@ body.menu-open {
 }
 
 .integration__steps {
-    margin: 105px 0 0;
+    margin: 110px 0 0;
 
     display: flex;
     gap: 40px;
@@ -1112,7 +1112,7 @@ body.menu-open {
     }
 
     @media (min-width: 980px) {
-        margin: 75px 0 0;
+        margin: 80px 0 0;
         gap: 70px;
         justify-content: center;
         overflow: visible;
