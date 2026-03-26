@@ -1259,7 +1259,6 @@ body.menu-open {
     pointer-events: none;
 }
 
-/* ===== LIST ===== */
 .business__list {
     position: relative;
     z-index: 2;
@@ -1275,10 +1274,9 @@ body.menu-open {
     }
 }
 
-/* ===== CARD ===== */
 .business__item {
     width: 100%;
-    max-width: 390px;
+    max-width: 330px;
     height: 90px;
 
     display: flex;
@@ -1286,43 +1284,31 @@ body.menu-open {
     gap: 20px;
 
     padding: 20px;
+    margin: 0 auto;
     border-radius: 24px;
     font-size: 24px;
     color: #ffffffcc;
     line-height: 1.1;
-    
-    margin: 0 auto;
-    
+
+
     @media (min-width: 980px) {
         width: 300px;
         height: 200px;
-        
+
         flex-direction: column;
         justify-content: space-between;
         align-items: start;
-        
-        color: var(--color-text-secondary);
 
-        /* position: relative;
-        z-index: 1;
-        overflow: hidden;
-        background: transparent; */
+        color: var(--color-text-secondary);
     }
 }
 
-/* .business__item::before,
-.business__item::after {
-    display: none;
-} */
-
-/* ===== CONTENT ABOVE BG ===== */
-.business__item > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== ICON ===== */
 .business__icon {
-    font-size: 24px;
-    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+
+    @media (min-width: 980px) {
+        width: 60px;
+        height: 60px;
+    }
 }
