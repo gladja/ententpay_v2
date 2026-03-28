@@ -12,7 +12,7 @@
     --transition-slow: 0.5s ease;
 }
 
-/*////////////////fonts////////////////*/
+/* ANCHOR fonts */
 @font-face {
     font-family: "Gilroy";
     src: url("../assets/fonts/Gilroy-Regular.woff2") format("woff2");
@@ -31,7 +31,7 @@
     font-weight: 700;
 }
 
-/*////////////////global style////////////////*/
+/* ANCHOR global style */
 * {
     box-sizing: border-box;
 }
@@ -176,7 +176,7 @@ body {
     }
 }
 
-/*////////////////header/////////////////*/
+/* ANCHOR header */
 .header {
     z-index: 50;
     padding: 50px 0;
@@ -401,7 +401,7 @@ body.menu-open {
     position: absolute;
 }
 
-/*////////////////hero////////////////*/
+/* ANCHOR hero */
 .hero {
     display: flex;
     align-items: flex-start;
@@ -501,7 +501,7 @@ body.menu-open {
     height: 100% !important;
 }
 
-/*///////////////stats///////////////////*/
+/* ANCHOR stats */
 .stats {
     /* padding: 80px 0 0; */
     overflow: hidden;
@@ -571,8 +571,7 @@ body.menu-open {
     }
 }
 
-/*///////////////////////solutions/////////////////////*/
-/* solutions header */
+/* ANCHOR solutions */
 .solutions {
     padding: 100px 0 0;
     text-align: center;
@@ -857,22 +856,7 @@ body.menu-open {
     }
 }
 
-/* .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 4px;
-    border: 2px solid #6c5cff;
-    cursor: pointer;
-    transition: all var(--transition-slow);
-
-    &.active {
-        width: 18px;
-        height: 18px;
-        background: var(--color-primary-hover);
-    }
-} */
-
-/* ///////////////////////payments slider///////////////////////*/
+/* ANCHOR payments */
 .pm3 {
     position: relative;
     padding-top: 60px;
@@ -1070,7 +1054,7 @@ body.menu-open {
     }
 }
 
-/* ///////////////////////integration///////////////////////*/
+/* ANCHOR integration */
 .integration {
     margin: 30px 0 0;
     padding: 90px 0 0;
@@ -1208,7 +1192,7 @@ body.menu-open {
     }
 }
 
-/* ///////////////////////business///////////////////////*/
+/* ANCHOR business */
 .business {
     padding: 36px 0 70px;
 
@@ -1233,7 +1217,6 @@ body.menu-open {
     }
 }
 
-/* ===== BG WRAPPER ===== */
 .business__bg {
     margin-top: 39px;
     position: relative;
@@ -1244,7 +1227,7 @@ body.menu-open {
     }
 }
 
-/* ===== CANVAS ===== */
+/*  canvas  */
 .business__canvas {
     position: absolute;
     inset: 0;
@@ -1307,7 +1290,7 @@ body.menu-open {
     }
 }
 
-/* ///////////////////////faq///////////////////////*/
+/* ANCHOR faq */
 .faq {
     padding: 30px 0 40px;
     background: url(../assets/img/faq-bg.png) bottom center/cover no-repeat;
@@ -1349,7 +1332,7 @@ body.menu-open {
         linear-gradient(270deg, rgba(252, 103, 1, 0) 74.47%, rgba(252, 103, 1, 0.4) 114.57%);
 }
 
-/* BUTTON */
+/* button */
 .faq__question {
     color: var(--color-text-third);
     width: 100%;
@@ -1412,6 +1395,7 @@ body.menu-open {
     }
 }
 
+/* ANCHOR footer */
 .footer {
     padding: 34px 0px 60px;
     background: url(../assets/img/footer-bg.png) top center/cover no-repeat;
