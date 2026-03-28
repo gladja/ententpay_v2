@@ -306,3 +306,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(tick);
 })();
+
+
+
+document.querySelectorAll('.faq__question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq__item');
+    const isOpen = item.classList.contains('active');
+
+    // закриваємо всі
+    document.querySelectorAll('.faq__item').forEach(el => {
+      el.classList.remove('active');
+      el.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+    });
+
+    // відкриваємо якщо був закритий
+    if (!isOpen) {
+      item.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
