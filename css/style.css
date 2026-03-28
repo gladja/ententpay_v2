@@ -155,13 +155,13 @@ body {
     }
 }
 
-.top-section {
+.header__hero {
     @media (min-width: 980px) {
         background: url(../assets/img/main-bg.webp) bottom center/cover no-repeat;
     }
 }
 
-.main-section {
+.main__section {
     @media (min-width: 980px) {
         background: url(../assets/img/second-bg.webp) top center/cover no-repeat;
     }
@@ -198,12 +198,13 @@ body {
     width: auto;
 }
 
-.nav {
+.nav__list {
     display: none;
 
     @media (min-width: 980px) {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         gap: 30px;
     }
 
@@ -846,7 +847,7 @@ body.menu-open {
     align-items: center;
     gap: 14px;
     margin-top: 26px;
-    
+
     li {
         height: 18px;
     }
@@ -857,7 +858,7 @@ body.menu-open {
 }
 
 /* ANCHOR payments */
-.pm3 {
+.payment {
     position: relative;
     padding-top: 60px;
     overflow: hidden;
@@ -867,7 +868,7 @@ body.menu-open {
     }
 }
 
-.pm3-layout {
+.payment__layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
@@ -879,7 +880,7 @@ body.menu-open {
     }
 }
 
-.pm3-bg {
+.payment__bg {
     /* width: 354px; */
     height: 643px;
     padding: 34px 28px;
@@ -898,12 +899,12 @@ body.menu-open {
     }
 }
 
-.pm3__title {
+.payment__title {
     text-align: start;
     margin: 0;
 }
 
-.pm3__subtitle {
+.payment__subtitle {
     width: 280px;
     margin: 0 0 405px;
     text-align: start;
@@ -916,7 +917,7 @@ body.menu-open {
 }
 
 /* payment slider */
-.pm3-slider {
+.payment-slider {
     /* desktop 2 cards visible */
     /* width: 585px; */
     overflow: hidden;
@@ -933,17 +934,17 @@ body.menu-open {
     }
 }
 
-.pm3-viewport {
+.payment-viewport {
     overflow: hidden;
 }
 
-.pm3-track {
+.payment-track {
     display: flex;
     align-items: center;
     transition: transform var(--transition-slow);
 }
 
-.pm3-card {
+.payment-card {
     flex: 0 0 290px;
     height: 360px;
     padding: 30px 25px;
@@ -968,7 +969,7 @@ body.menu-open {
     &:first-child {
         background: url(../assets/img/pay-card-01.webp) center/contain no-repeat;
 
-        .pm3-card__text {
+        .payment-card__text {
             width: 200px;
         }
     }
@@ -980,21 +981,21 @@ body.menu-open {
     &:nth-child(3) {
         background: url(../assets/img/pay-card-03.webp) center/contain no-repeat;
 
-        .pm3-card__title {
+        .payment-card__title {
             width: 200px;
         }
     }
 
     &:nth-child(4) {
         background: url(../assets/img/pay-card-04.webp) center/contain no-repeat;
-        .pm3-card__title {
+        .payment-card__title {
             width: 200px;
         }
     }
 
     &:nth-child(5) {
         background: url(../assets/img/pay-card-05.webp) center/contain no-repeat;
-        .pm3-card__title {
+        .payment-card__title {
             width: 210px;
         }
     }
@@ -1004,18 +1005,18 @@ body.menu-open {
     }
 }
 
-.pm3-card.is-center {
+.payment-card.is-center {
     opacity: 1;
     margin-right: 15px;
     transform: scale(1);
 }
 
-.pm3-card__title {
+.payment-card__title {
     font-size: 32px;
     font-weight: 500;
 }
 
-.pm3-card__text {
+.payment-card__text {
     color: var(--color-text-secondary);
     font-size: 16px;
     line-height: 1.2;
@@ -1023,7 +1024,7 @@ body.menu-open {
 }
 
 /* slider  dots */
-.pm3-dots {
+.payment__dots {
     width: fit-content;
     height: 42px;
     padding: 12px 16px;
@@ -1034,24 +1035,17 @@ body.menu-open {
     align-items: center;
     margin-left: 52px;
 
+    li {
+        height: 18px;
+    }
+
     @media (min-width: 980px) {
         margin-left: 0;
     }
 }
 
-.pm3-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 4px;
-    border: 2px solid #6c5cff;
-    cursor: pointer;
-    transition: all var(--transition-slow);
-
-    &.active {
-        width: 18px;
-        height: 18px;
-        background: var(--color-primary-hover);
-    }
+.payment__dot {
+    background: transparent;
 }
 
 /* ANCHOR integration */

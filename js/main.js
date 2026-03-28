@@ -143,9 +143,9 @@ dots.forEach((dot, i) => {
 
 ///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector(".pm3-track");
-    const cards = document.querySelectorAll(".pm3-card");
-    const dots = document.querySelectorAll(".pm3-dot");
+    const track = document.querySelector(".payment-track");
+    const cards = document.querySelectorAll(".payment-card");
+    const dots = document.querySelectorAll(".payment__dot");
 
     if (!track || !cards.length || !dots.length) return;
 

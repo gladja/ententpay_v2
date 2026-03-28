@@ -9,19 +9,31 @@
         <link rel="stylesheet" href="./css/style.css" />
     </head>
     <body>
-        <div class="top-section">
+        <div class="header__hero">
             <header class="header">
                 <div class="container header__row">
                     <a class="logo" href="#">
                         <img src="./assets/img/logo.svg" alt="EnterntPay" title="EnterntPay" />
                     </a>
 
-                    <nav class="nav" data-nav>
-                        <a class="hover-text" href="#about">About us</a>
-                        <a class="hover-text" href="#connect">How to connect</a>
-                        <a class="hover-text" href="#clients">Clients</a>
-                        <a class="hover-text" href="#faq">FAQ</a>
-                        <a class="hover-text" href="#contacts">Contacts</a>
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li>
+                                <a class="hover-text" href="#about">About us</a>
+                            </li>
+                            <li>
+                                <a class="hover-text" href="#connect">How to connect</a>
+                            </li>
+                            <li>
+                                <a class="hover-text" href="#clients">Clients</a>
+                            </li>
+                            <li>
+                                <a class="hover-text" href="#faq">FAQ</a>
+                            </li>
+                            <li>
+                                <a class="hover-text" href="#contacts">Contacts</a>
+                            </li>
+                        </ul>
                     </nav>
 
                     <div class="header__right">
@@ -88,26 +100,24 @@
         </div>
 
         <main>
-            <div class="main-section">
+            <div class="main__section">
                 <section id="stats" class="stats">
-                    <div class="container stats__row">
-                        <div class="stats__item">
+                    <ul class="container stats__row">
+                        <li class="stats__item">
                             <div class="stats__number">6</div>
                             <div class="stats__text">
                                 <span>years</span>
                                 <p>on the online payments market</p>
                             </div>
-                        </div>
-
-                        <div class="stats__item">
+                        </li>
+                        <li class="stats__item">
                             <div class="stats__number">10</div>
                             <div class="stats__text">
                                 <span>million</span>
                                 <p>transactions processed monthly</p>
                             </div>
-                        </div>
-
-                        <div class="stats__item">
+                        </li>
+                        <li class="stats__item">
                             <div class="stats__number">190</div>
                             <div class="stats__text">
                                 <span>countries</span>
@@ -116,16 +126,15 @@
                                     support
                                 </p>
                             </div>
-                        </div>
-
-                        <div class="stats__item">
+                        </li>
+                        <li class="stats__item">
                             <div class="stats__number">180</div>
                             <div class="stats__text">
                                 <span>ways</span>
                                 <p>to accept and route payments</p>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="solutions">
@@ -190,49 +199,61 @@
                 </section>
             </div>
 
-            <section id="payments" class="pm3">
+            <section id="payments" class="payment">
                 <div class="container">
-                    <div class="pm3-layout">
-                        <div class="pm3-bg">
-                            <h3 class="pm3__title title">Payment methods</h3>
-                            <p class="pm3__subtitle subtitle">
+                    <div class="payment__layout">
+                        <div class="payment__bg">
+                            <h3 class="payment__title title">Payment methods</h3>
+                            <p class="payment__subtitle subtitle">
                                 Accept payments wherever your clients are. Ready-to-use solutions for online
                                 and offline channels with fast integration and secure processing.
                             </p>
-                            <div class="pm3-dots">
-                                <span class="pm3-dot active"></span>
-                                <span class="pm3-dot"></span>
-                                <span class="pm3-dot"></span>
-                                <span class="pm3-dot"></span>
-                                <span class="pm3-dot"></span>
-                                <span class="pm3-dot"></span>
-                            </div>
+                            <ul class="payment__dots">
+                                <li>
+                                    <button class="payment__dot dot active"></button>
+                                </li>
+                                <li>
+                                    <button class="payment__dot dot"></button>
+                                </li>
+                                <li>
+                                    <button class="payment__dot dot"></button>
+                                </li>
+                                <li>
+                                    <button class="payment__dot dot"></button>
+                                </li>
+                                <li>
+                                    <button class="payment__dot dot"></button>
+                                </li>
+                                <li>
+                                    <button class="payment__dot dot"></button>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div class="pm3-slider">
-                            <div class="pm3-viewport">
-                                <ul class="pm3-track">
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">Payment cards</h3>
-                                        <p class="pm3-card__text">
+                        <div class="payment-slider">
+                            <div class="payment-viewport">
+                                <ul class="payment-track">
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">Payment cards</h3>
+                                        <p class="payment-card__text">
                                             Visa, Mastercard, UnionPay, RuPay, Uzcard and more
                                         </p>
                                     </li>
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">Digital wallets</h3>
-                                        <p class="pm3-card__text">Apple Pay, Google Pay, PayPal</p>
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">Digital wallets</h3>
+                                        <p class="payment-card__text">Apple Pay, Google Pay, PayPal</p>
                                     </li>
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">Internet banking</h3>
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">Internet banking</h3>
                                     </li>
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">Website & mobile app</h3>
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">Website & mobile app</h3>
                                     </li>
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">Social media & messengers</h3>
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">Social media & messengers</h3>
                                     </li>
-                                    <li class="pm3-card">
-                                        <h3 class="pm3-card__title">QR codes offline</h3>
+                                    <li class="payment-card">
+                                        <h3 class="payment-card__title">QR codes offline</h3>
                                     </li>
                                 </ul>
                             </div>
@@ -466,7 +487,14 @@
                 </section>
 
                 <section class="footer__brand">
-                    <img class="footer__logo" src="./assets/img/logo.svg" />
+                    <a href="#">
+                        <img
+                            class="footer__logo"
+                            src="./assets/img/logo.svg"
+                            alt="EnterntPay"
+                            title="EnterntPay"
+                        />
+                    </a>
                     <p class="footer__copy">© 2026. All rights reserved.</p>
                 </section>
             </div>
