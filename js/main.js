@@ -49,7 +49,7 @@ window.addEventListener("scroll", () => {
 
 ///////////////////////////slider///////////////////////////
 const cards = document.querySelectorAll(".card");
-const dots = document.querySelectorAll(".dot");
+const dots = document.querySelectorAll(".solutions__dot");
 
 let order = [0, 1, 2];
 

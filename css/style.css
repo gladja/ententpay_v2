@@ -90,6 +90,23 @@ body {
     }
 }
 
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    border: 2px solid var(--color-primary-hover);
+    cursor: pointer;
+    background: var(--color-bg);
+    padding: 0;
+    transition: all var(--transition-slow);
+
+    &.active {
+        width: 18px;
+        height: 18px;
+        background: var(--color-primary-hover);
+    }
+}
+
 .title {
     text-align: center;
     margin: 0 auto 16px;
@@ -642,7 +659,7 @@ body.menu-open {
     gap: 32px;
     /* justify-content: center; */
     align-items: center;
-    transition: transform var( --transition-slow);
+    transition: transform var(--transition-slow);
     will-change: transform;
     /* position: relative; */
 
@@ -825,19 +842,22 @@ body.menu-open {
 
 /* slider  dots */
 .solutions__dots {
-    height: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 14px;
     margin-top: 26px;
+    
+    li {
+        height: 18px;
+    }
 
     @media (min-width: 980px) {
         margin-top: 40px;
     }
 }
 
-.dot {
+/* .dot {
     width: 12px;
     height: 12px;
     border-radius: 4px;
@@ -850,7 +870,7 @@ body.menu-open {
         height: 18px;
         background: var(--color-primary-hover);
     }
-}
+} */
 
 /* ///////////////////////payments slider///////////////////////*/
 .pm3 {
