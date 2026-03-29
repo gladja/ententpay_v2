@@ -48,6 +48,12 @@ project/
 
 Project uses a lightweight build setup (no bundlers).
 
+### Install dependencies
+
+```
+npm install
+```
+
 ### Run build
 
 ```
