@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs (WebStorm, IntelliJ)
+.idea/
+
