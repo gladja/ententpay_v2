@@ -143,7 +143,7 @@ dots.forEach((dot, i) => {
 
 ///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector(".payment-track");
+    const track = document.querySelector(".payment__track");
     const cards = document.querySelectorAll(".payment-card");
     const dots = document.querySelectorAll(".payment__dot");
 

@@ -917,7 +917,7 @@ body.menu-open {
 }
 
 /* payment slider */
-.payment-slider {
+.payment__slider {
     /* desktop 2 cards visible */
     /* width: 585px; */
     overflow: hidden;
@@ -934,11 +934,11 @@ body.menu-open {
     }
 }
 
-.payment-viewport {
+.payment__viewport {
     overflow: hidden;
 }
 
-.payment-track {
+.payment__track {
     display: flex;
     align-items: center;
     transition: transform var(--transition-slow);
