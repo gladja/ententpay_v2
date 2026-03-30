@@ -1287,10 +1287,10 @@ body.menu-open {
 /* ANCHOR faq */
 .faq {
     padding: 30px 0 40px;
-    background: url(../assets/img/faq-bg.png) bottom center/cover no-repeat;
+    background: url(../assets/img/faq-bg-m.webp) bottom center/cover no-repeat;
 
     @media (min-width: 980px) {
-        background: url(../assets/img/faq-bg.png) bottom right/cover no-repeat;
+        background: url(../assets/img/faq-bg.webp) bottom right/cover no-repeat;
         padding: 30px 0 88px;
     }
 }
@@ -1392,10 +1392,10 @@ body.menu-open {
 /* ANCHOR footer */
 .footer {
     padding: 34px 0px 60px;
-    background: url(../assets/img/footer-bg.png) top center/cover no-repeat;
+    background: url(../assets/img/footer-bg-m.webp) top center/cover no-repeat;
 
     @media (min-width: 980px) {
-        background: url(../assets/img/footer-bg.png) top right/cover no-repeat;
+        background: url(../assets/img/footer-bg.webp) top right/cover no-repeat;
         padding: 52px 0px 60px;
     }
 }
