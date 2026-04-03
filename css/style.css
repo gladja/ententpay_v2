@@ -145,11 +145,8 @@ body {
 
 /* background */
 .hero {
-    background-image: url(../assets/img/ent-land-mob-v31.png);
-    background-position: center -30px;
-    background-size: cover;
-    background-repeat: no-repeat;
-
+    background: url(../assets/img/main-bg-m.webp) bottom center/cover no-repeat;
+    
     @media (min-width: 980px) {
         background-image: none;
     }
@@ -504,11 +501,13 @@ body.menu-open {
 
 /* ANCHOR stats */
 .stats {
-    /* padding: 80px 0 0; */
+    background: url(../assets/img/second-bg-m.webp) top center/cover no-repeat;
+    padding: 47px 0;
     overflow: hidden;
     /* ховаємо 4 блок */
 
     @media (min-width: 980px) {
+        background-image: none;
         padding: 40px 0 0;
     }
 }
@@ -574,7 +573,7 @@ body.menu-open {
 
 /* ANCHOR solutions */
 .solutions {
-    padding: 100px 0 0;
+    padding: 27px 0 0;
     text-align: center;
     overflow: hidden;
 
@@ -713,6 +712,7 @@ body.menu-open {
 .card.left {
     transform: translate(calc(-5% - 560px), -50%) scale(0.9);
     z-index: 1;
+    cursor: pointer;
 
     @media (min-width: 980px) {
         transform: translate(calc(-53% - 560px), -50%) scale(0.9);
@@ -722,6 +722,7 @@ body.menu-open {
 .card.right {
     transform: translate(calc(-95% + 560px), -50%) scale(0.9);
     z-index: 1;
+    cursor: pointer;
 
     @media (min-width: 980px) {
         transform: translate(calc(-47% + 560px), -50%) scale(0.9);
@@ -953,6 +954,7 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    cursor: pointer;
 
     opacity: 0.6;
     transform: scale(0.9);
