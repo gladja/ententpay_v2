@@ -4,7 +4,7 @@
     --color-text: #fff;
     --color-text-secondary: #ffffff99;
     --color-text-third: #ffffffcc;
-    --color-bg: #05040a;
+    --color-bg: #000;
     --color-text-bg: #1c1837;
     --color-overlay: #00000080;
 
@@ -159,6 +159,8 @@ body {
 }
 
 .main__section {
+        background: url(../assets/img/second-bg-m.webp) top center/contain no-repeat;
+
     @media (min-width: 980px) {
         background: url(../assets/img/second-bg.webp) top center/cover no-repeat;
     }
@@ -501,13 +503,13 @@ body.menu-open {
 
 /* ANCHOR stats */
 .stats {
-    background: url(../assets/img/second-bg-m.webp) top center/cover no-repeat;
+    /* background: url(../assets/img/second-bg-m.webp) top center/cover no-repeat; */
     padding: 47px 0;
     overflow: hidden;
     /* ховаємо 4 блок */
 
     @media (min-width: 980px) {
-        background-image: none;
+        /* background-image: none; */
         padding: 40px 0 0;
     }
 }
