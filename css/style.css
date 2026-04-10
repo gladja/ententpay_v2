@@ -1291,10 +1291,10 @@ body.menu-open {
 /* ANCHOR faq */
 .faq {
     padding: 30px 0 40px;
-    background: url(../assets/img/faq-bg-m.webp) bottom center/cover no-repeat;
+    background: url(../assets/img/faq-bg-m.webp) top center/cover no-repeat;
 
     @media (min-width: 980px) {
-        background: url(../assets/img/faq-bg.webp) bottom right/cover no-repeat;
+        background: url(../assets/img/faq-bg.webp) top right/cover no-repeat;
         padding: 30px 0 88px;
     }
 }
