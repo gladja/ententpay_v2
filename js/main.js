@@ -24,28 +24,28 @@ mnav?.addEventListener("click", (e) => {
 mnav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", toggleMenu));
 
 ///////////////////////////stats////////////////////////
-const stats = document.querySelector(".stats");
-const statsRow = document.querySelector(".stats__row");
+// const stats = document.querySelector(".stats");
+// const statsRow = document.querySelector(".stats__row");
 
-let startScroll = null;
+// let startScroll = null;
 
-window.addEventListener("scroll", () => {
-    const rect = stats.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+// window.addEventListener("scroll", () => {
+//     const rect = stats.getBoundingClientRect();
+//     const windowHeight = window.innerHeight;
 
-    // коли секція входить у viewport — фіксуємо старт
-    if (rect.top <= windowHeight && startScroll === null) {
-        startScroll = window.scrollY;
-    }
+//     // коли секція входить у viewport — фіксуємо старт
+//     if (rect.top <= windowHeight && startScroll === null) {
+//         startScroll = window.scrollY;
+//     }
 
-    if (startScroll !== null) {
-        const distance = window.scrollY - startScroll;
+//     if (startScroll !== null) {
+//         const distance = window.scrollY - startScroll;
 
-        const move = Math.max(0, Math.min(distance * 0.5, 320));
+//         const move = Math.max(0, Math.min(distance * 0.5, 320));
 
-        statsRow.style.transform = `translateX(-${move}px)`;
-    }
-});
+//         statsRow.style.transform = `translateX(-${move}px)`;
+//     }
+// });
 
 ///////////////////////////slider///////////////////////////
 const cards = document.querySelectorAll(".card");
