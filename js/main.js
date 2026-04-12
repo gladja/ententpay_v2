@@ -8,20 +8,128 @@ lottie.loadAnimation({
 });
 
 ///////////////////////////burger menu//////////////////////
+// const burger = document.querySelector("[data-burger]");
+// const mnav = document.querySelector("[data-mnav]");
+
+// function toggleMenu() {
+//     document.body.classList.toggle("menu-open");
+//     mnav?.classList.toggle("is-open");
+//     burger?.classList.toggle("is-active");
+// }
+
+// burger?.addEventListener("click", toggleMenu);
+// mnav?.addEventListener("click", (e) => {
+//     if (e.target === mnav) closeMenu();
+// });
+// mnav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", toggleMenu));
+
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
+const modal = document.querySelector("#contact-modal");
+const form = document.querySelector(".contact-form");
 
-function toggleMenu() {
-    document.body.classList.toggle("menu-open");
-    mnav?.classList.toggle("is-open");
-    burger?.classList.toggle("is-active");
+// MENU
+function openMenu() {
+    document.body.classList.add("menu-open");
+    mnav?.classList.add("is-open");
+    burger?.classList.add("is-active");
 }
 
-burger?.addEventListener("click", toggleMenu);
-mnav?.addEventListener("click", (e) => {
-    if (e.target === mnav) closeMenu();
+function closeMenu() {
+    document.body.classList.remove("menu-open");
+    mnav?.classList.remove("is-open");
+    // ❗️бургер не чіпаємо тут (важливо)
+}
+
+function toggleMenu() {
+    if (document.body.classList.contains("menu-open")) {
+        closeMenu();
+        burger?.classList.remove("is-active");
+    } else {
+        openMenu();
+    }
+}
+
+// MODAL
+function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+}
+
+function openModal() {
+    const scrollBarWidth = getScrollbarWidth();
+
+    modal?.classList.add("is-open");
+    document.body.classList.add("modal-open", "no-scroll");
+
+    document.body.style.paddingRight = scrollBarWidth + "px";
+    // ❗️бургер стає хрестиком
+    burger?.classList.add("is-active");
+}
+
+function closeModal() {
+    modal?.classList.remove("is-open");
+    document.body.classList.remove("modal-open", "no-scroll");
+
+    document.body.style.paddingRight = "";
+    // ❗️бургер назад у полоски
+    burger?.classList.remove("is-active");
+}
+
+
+// BURGER CLICK
+burger?.addEventListener("click", () => {
+    // якщо відкрита модалка → закриваємо її
+    if (document.body.classList.contains("modal-open")) {
+        closeModal();
+        return;
+    }
+    // інакше працюємо як меню
+    toggleMenu();
 });
-mnav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", toggleMenu));
+
+
+// CONTACT BUTTONS
+document.querySelectorAll('a[href="#contacts-modal"]').forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (document.body.classList.contains("menu-open")) {
+            closeMenu();
+            // ⏱ чекаємо поки меню закриється
+            setTimeout(() => {
+                openModal();
+            }, 100); // під transition
+        } else {
+            openModal();
+        }
+    });
+});
+
+// CLOSE MODAL (overlay + ✕)
+modal?.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]") || e.target === modal) {
+        closeModal();
+    }
+});
+
+// CLICK ON MENU LINKS
+mnav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        closeMenu();
+    });
+});
+
+form?.addEventListener("submit", (e) => {
+    e.preventDefault(); // ❗️ головне — прибирає скрол і перезавантаження
+
+    // тут можеш додати fetch / відправку
+
+    // очистка форми (опціонально)
+    form.reset();
+
+    // закриваємо модалку
+    closeModal();
+});
 
 ///////////////////////////stats////////////////////////
 // const stats = document.querySelector(".stats");
@@ -307,23 +415,21 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(tick);
 })();
 
+document.querySelectorAll(".faq__question").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const item = btn.closest(".faq__item");
+        const isOpen = item.classList.contains("active");
 
+        // закриваємо всі
+        document.querySelectorAll(".faq__item").forEach((el) => {
+            el.classList.remove("active");
+            el.querySelector(".faq__question").setAttribute("aria-expanded", "false");
+        });
 
-document.querySelectorAll('.faq__question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq__item');
-    const isOpen = item.classList.contains('active');
-
-    // закриваємо всі
-    document.querySelectorAll('.faq__item').forEach(el => {
-      el.classList.remove('active');
-      el.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+        // відкриваємо якщо був закритий
+        if (!isOpen) {
+            item.classList.add("active");
+            btn.setAttribute("aria-expanded", "true");
+        }
     });
-
-    // відкриваємо якщо був закритий
-    if (!isOpen) {
-      item.classList.add('active');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
 });

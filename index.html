@@ -54,7 +54,7 @@
                             <button class="lang__btn" type="button">En</button>
                         </div>
 
-                        <a class="btn btn--primary none" href="#contacts"> Contact us </a>
+                        <a class="btn btn--primary none" href="#contacts-modal"> Contact us </a>
 
                         <button class="burger" type="button" aria-label="Open menu" data-burger>
                             <span></span><span></span><span></span>
@@ -80,7 +80,7 @@
                             <a class="hover-text" href="#contacts">Contacts</a>
                         </li>
                         <li>
-                            <a class="btn btn--primary" href="#contacts">Contact us</a>
+                            <a class="btn btn--primary" href="#contacts-modal">Contact us</a>
                         </li>
                         <li>
                             <div class="lang">
@@ -511,5 +511,23 @@
                 </section>
             </div>
         </footer>
+
+        <div class="modal" id="contact-modal">
+            <div class="modal__overlay" data-close></div>
+            
+            <div class="modal__content">
+                <button class="modal__close is-active burger" type="button" aria-label="close form" data-close>
+                    <span></span><span></span><span></span>
+                </button>
+
+                <form class="contact-form">
+                    <h2>Contact us</h2>
+                    <input type="text" placeholder="Name" required />
+                    <input type="email" placeholder="E-mail" required />
+                    <textarea placeholder="Message" rows="4" required></textarea>
+                    <button type="submit" class="btn btn--primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
