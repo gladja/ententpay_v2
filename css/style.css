@@ -410,13 +410,17 @@ body.menu-open {
     z-index: 200;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
 
     opacity: 0;
     visibility: hidden;
     transition:
         opacity var(--transition-slow),
         visibility var(--transition-slow);
+
+     @media (min-width: 980px) {
+        align-items: center;
+     }
 
     &.is-open {
         opacity: 1;
@@ -440,7 +444,7 @@ body.menu-open {
 
 .modal__content {
     position: relative;
-    margin: 150px auto 0;
+    margin: 0 auto;
     padding: 63px 24px 40px;
     border-radius: 20px;
     width: 350px;
