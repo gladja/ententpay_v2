@@ -228,7 +228,8 @@ body {
     display: none;
 
     @media (min-width: 980px) {
-        display: flex;
+        /* display: flex; */
+        display: none;
     }
 }
 
@@ -390,7 +391,8 @@ body.menu-open {
     }
 
     li > .lang {
-        display: flex;
+        /* display: flex; */
+        display: none;
     }
 
     li > .lang .lang__btn {
