@@ -412,7 +412,7 @@ body.menu-open {
     z-index: 200;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
 
     opacity: 0;
     visibility: hidden;
@@ -436,7 +436,8 @@ body.menu-open {
 
 .modal__overlay {
     position: absolute;
-    inset: 150px 0 -100px 0;
+    /* inset: 150px 0 -100px 0; */
+    inset:  0;
     background: rgba(0, 0, 0, 0.807);
 
     @media (min-width: 980px) {
@@ -447,7 +448,7 @@ body.menu-open {
 .modal__content {
     position: relative;
     margin: 0 auto;
-    padding: 40px 24px 40px;
+    padding: 60px 24px 40px;
     border-radius: 20px;
     width: 350px;
     border-radius: 24px;
@@ -468,7 +469,8 @@ body.menu-open {
     right: 24px;
 
     &.burger {
-        display: none;
+        /* display: none; */
+        display: flex;
 
         @media (min-width: 980px) {
             display: flex;
