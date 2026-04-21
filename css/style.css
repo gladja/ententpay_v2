@@ -1147,7 +1147,7 @@ body.menu-open {
         padding: 30px;
     }
 
-    &:first-child {
+    &.one {
         background: url(../assets/img/pay-card-01.webp) center/contain no-repeat;
 
         .payment-card__text {
@@ -1155,11 +1155,11 @@ body.menu-open {
         }
     }
 
-    &:nth-child(2) {
+    &.two {
         background: url(../assets/img/pay-card-02.webp) center/contain no-repeat;
     }
 
-    &:nth-child(3) {
+    &.three {
         background: url(../assets/img/pay-card-03.webp) center/contain no-repeat;
 
         .payment-card__title {
@@ -1167,28 +1167,29 @@ body.menu-open {
         }
     }
 
-    &:nth-child(4) {
+    &.four {
         background: url(../assets/img/pay-card-04.webp) center/contain no-repeat;
+        
         .payment-card__title {
             width: 200px;
         }
     }
 
-    &:nth-child(5) {
+    &.five {
         background: url(../assets/img/pay-card-05.webp) center/contain no-repeat;
+        
         .payment-card__title {
             width: 210px;
         }
     }
 
-    &:nth-child(6) {
+    &.six {
         background: url(../assets/img/pay-card-06.webp) center/contain no-repeat;
     }
 }
 
 .payment-card.is-center {
     opacity: 1;
-    margin-right: 15px;
     transform: scale(1);
 }
 

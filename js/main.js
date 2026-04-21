@@ -252,44 +252,98 @@ dots.forEach((dot, i) => {
 ///////////////////////////payments slider///////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".payment__track");
-    const cards = document.querySelectorAll(".payment-card");
     const dots = document.querySelectorAll(".payment__dot");
 
-    if (!track || !cards.length || !dots.length) return;
+    if (!track || !dots.length) return;
 
-    let index = 0;
-
+    let currentCardIndex = 0;
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
+    let isAnimating = false;
+
+    function getCards() {
+        return Array.from(track.querySelectorAll(".payment-card"));
+    }
 
     function getCardWidth() {
+        const cards = getCards();
+        if (!cards.length) return 0;
         const gap = parseInt(getComputedStyle(track).gap) || 0;
         return cards[0].offsetWidth + gap;
     }
 
-    function updateSlider(animate = true) {
-        const cardWidth = getCardWidth();
+    // Інічіалізація
+    const initialCards = getCards();
+    initialCards.forEach(c => c.classList.remove("is-center"));
+    if (initialCards[0]) initialCards[0].classList.add("is-center");
+    dots[0].classList.add("active");
 
-        track.style.transition = animate ? "transform 0.4s ease" : "none";
-        track.style.transform = `translateX(-${index * cardWidth}px)`;
-
-        cards.forEach((c) => c.classList.remove("is-center"));
-        cards[index].classList.add("is-center");
-
-        dots.forEach((d) => d.classList.remove("active"));
-        dots[index].classList.add("active");
-    }
-
-    updateSlider();
-
-    // 🔥 DOTS
-    dots.forEach((dot, i) => {
+    // 🔥 DOTS - КЛІК ДЛЯ НАВІГАЦІЇ
+    dots.forEach((dot, dotIndex) => {
         dot.addEventListener("click", () => {
-            index = i;
-            updateSlider();
+            const currentPos = currentCardIndex % 6;
+            
+            if (currentPos === dotIndex) return;
+            
+            // Запобігаємо кліккам під час анімації
+            if (isAnimating) {
+                return;
+            }
+            
+            let stepsForward = (dotIndex - currentPos + 6) % 6;
+            let stepsBackward = (currentPos - dotIndex + 6) % 6;
+            let steps = stepsForward <= stepsBackward ? stepsForward : -stepsBackward;
+
+            const cardWidth = getCardWidth();
+            const isForward = steps > 0;
+            const absSteps = Math.abs(steps);
+            
+            // Анимуємо свайп
+            isAnimating = true;
+            track.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transform = isForward ? `translateX(-${cardWidth * absSteps}px)` : `translateX(${cardWidth * absSteps}px)`;
+            
+            const handleTransitionEnd = (event) => {
+                // Срабатуємо тільки для transform, не для opacity
+                if (event.propertyName !== 'transform') return;
+                
+                track.removeEventListener("transitionend", handleTransitionEnd);
+                
+                // Переставляємо карточки по одній за раз - ВАЖЛИВО: беремо карточки У ЦИКЛЕ
+                for (let i = 0; i < absSteps; i++) {
+                    const cards = getCards(); // Беремо свіжі карточки кожний раз!
+                    if (isForward) {
+                        track.appendChild(cards[0]);
+                    } else {
+                        track.insertBefore(cards[cards.length - 1], cards[0]);
+                    }
+                }
+                
+                // Оновлюємо індекс карточки на позицію крапки
+                currentCardIndex = dotIndex;
+                
+                track.style.transition = "none";
+                track.style.transform = `translateX(0px)`;
+                
+                // Применяємо .is-center
+                const updatedCards = getCards();
+                updatedCards.forEach(c => c.classList.remove("is-center"));
+                if (updatedCards[0]) updatedCards[0].classList.add("is-center");
+                
+                // Оновлюємо точки
+                dots.forEach((d, i) => {
+                    d.classList.toggle("active", i === currentCardIndex % 6);
+                });
+                
+                isAnimating = false;
+            };
+            
+            track.addEventListener("transitionend", handleTransitionEnd);
         });
     });
+
+
 
     // -------------------
     // 🖱️ DRAG / SWIPE
@@ -306,10 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentX = e.touches ? e.touches[0].clientX : e.clientX;
         const diff = currentX - startX;
 
-        const cardWidth = getCardWidth();
-        const baseTranslate = -index * cardWidth;
-
-        track.style.transform = `translateX(${baseTranslate + diff}px)`;
+        track.style.transform = `translateX(${diff}px)`;
     }
 
     function endDrag() {
@@ -318,15 +369,79 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false;
 
         const diff = currentX - startX;
-        const threshold = 50; // мінімальний свайп
+        const threshold = 50;
+        const cardWidth = getCardWidth();
 
-        if (diff < -threshold && index < cards.length - 1) {
-            index++;
-        } else if (diff > threshold && index > 0) {
-            index--;
+        if (diff < -threshold) {
+            // Свайп вліво
+            track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transform = `translateX(-${cardWidth}px)`;
+            
+            const handleTransitionEnd = (event) => {
+                // Срабатуємо тільки для transform, не для opacity
+                if (event.propertyName !== 'transform') return;
+                
+                track.removeEventListener("transitionend", handleTransitionEnd);
+                
+                const cards = getCards();
+                track.appendChild(cards[0]);
+                
+                currentCardIndex++;
+                currentCardIndex = currentCardIndex % 6;
+                
+                track.style.transition = "none";
+                track.style.transform = `translateX(0px)`;
+                
+                // Применяємо .is-center
+                const updatedCards = getCards();
+                updatedCards.forEach(c => c.classList.remove("is-center"));
+                if (updatedCards[0]) updatedCards[0].classList.add("is-center");
+                
+                // Оновлюємо точки
+                dots.forEach((d, i) => {
+                    d.classList.toggle("active", i === currentCardIndex % 6);
+                });
+            };
+            
+            track.addEventListener("transitionend", handleTransitionEnd);
+        } else if (diff > threshold) {
+            // Свайп вправо
+            track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transform = `translateX(${cardWidth}px)`;
+            
+            const handleTransitionEnd = (event) => {
+                // Срабатуємо тільки для transform, не для opacity
+                if (event.propertyName !== 'transform') return;
+                
+                track.removeEventListener("transitionend", handleTransitionEnd);
+                
+                const cards = getCards();
+                const lastCard = cards[cards.length - 1];
+                track.insertBefore(lastCard, cards[0]);
+                
+                currentCardIndex--;
+                if (currentCardIndex < 0) currentCardIndex = 5;
+                
+                track.style.transition = "none";
+                track.style.transform = `translateX(0px)`;
+                
+                // Применяємо .is-center
+                const updatedCards = getCards();
+                updatedCards.forEach(c => c.classList.remove("is-center"));
+                if (updatedCards[0]) updatedCards[0].classList.add("is-center");
+                
+                // Оновлюємо точки
+                dots.forEach((d, i) => {
+                    d.classList.toggle("active", i === currentCardIndex % 6);
+                });
+            };
+            
+            track.addEventListener("transitionend", handleTransitionEnd);
+        } else {
+            // Свайп занадто короткий
+            track.style.transition = "transform 0.3s ease";
+            track.style.transform = `translateX(0px)`;
         }
-
-        updateSlider();
     }
 
     // 🖱️ mouse
