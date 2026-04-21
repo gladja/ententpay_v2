@@ -1137,6 +1137,7 @@ body.menu-open {
 
     opacity: 0.6;
     transform: scale(0.9);
+    transform-origin: right;
     transition:
         transform var(--transition-slow),
         opacity var(--transition-slow);
