@@ -8,21 +8,6 @@ lottie.loadAnimation({
 });
 
 ///////////////////////////burger menu//////////////////////
-// const burger = document.querySelector("[data-burger]");
-// const mnav = document.querySelector("[data-mnav]");
-
-// function toggleMenu() {
-//     document.body.classList.toggle("menu-open");
-//     mnav?.classList.toggle("is-open");
-//     burger?.classList.toggle("is-active");
-// }
-
-// burger?.addEventListener("click", toggleMenu);
-// mnav?.addEventListener("click", (e) => {
-//     if (e.target === mnav) closeMenu();
-// });
-// mnav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", toggleMenu));
-
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
 const modal = document.querySelector("#contact-modal");
@@ -376,12 +361,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         goToCard(Number(card.dataset.paymentIndex));
     });
-
-
-
-    // -------------------
+    
     // 🖱️ DRAG / SWIPE
-    // -------------------
     function startDrag(e) {
         if (isAnimating) return;
 
@@ -440,6 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
     track.addEventListener("touchend", endDrag);
 });
 
+///////////////////////////canvas animation business///////////////////////////
 (function () {
     const canvas = document.querySelector(".business__canvas");
     const bg = document.querySelector(".business__bg");
@@ -515,6 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(tick);
 })();
 
+///////////////////////////faq///////////////////////////
 document.querySelectorAll(".faq__question").forEach((btn) => {
     btn.addEventListener("click", () => {
         const item = btn.closest(".faq__item");
@@ -532,4 +515,37 @@ document.querySelectorAll(".faq__question").forEach((btn) => {
             btn.setAttribute("aria-expanded", "true");
         }
     });
+});
+
+
+///////////////////////////scroll to top button///////////////////////////
+const btn = document.getElementById('scrollTopBtn');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // не показываем в самом верху
+  if (currentScroll < 200) {
+    btn.classList.remove('show');
+    return;
+  }
+
+  if (currentScroll < lastScroll) {
+    // скролл вверх
+    btn.classList.add('show');
+  } else {
+    // скролл вниз
+    btn.classList.remove('show');
+  }
+
+  lastScroll = currentScroll;
+});
+
+// клик — вверх
+btn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
