@@ -1058,6 +1058,10 @@ body.menu-open {
 
         transform: translateX(-7%);
     }
+
+    @media (min-width: 1920px) {
+        transform: translateX(-22%);
+    }
 }
 
 .payment__bg {
@@ -1111,6 +1115,10 @@ body.menu-open {
         position: relative;
         left: 80px;
         bottom: 0;
+    }
+    
+    @media (min-width: 1920px) {
+        width: 1205px;
     }
 }
 
