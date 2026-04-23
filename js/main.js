@@ -1,4 +1,4 @@
-/////////////////////animation btn//////////////////////
+// ANCHOR → animation btn
 lottie.loadAnimation({
     container: document.getElementById("startBtnAnim"),
     renderer: "canvas",
@@ -7,13 +7,13 @@ lottie.loadAnimation({
     path: "./assets/lottie/entent-main-button.json",
 });
 
-///////////////////////////burger menu//////////////////////
+// ANCHOR → burger menu
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
 const modal = document.getElementById("contact-modal");
 const form = document.querySelector(".contact-form");
 
-// MENU
+// menu
 function openMenu() {
     document.body.classList.add("menu-open");
     mnav?.classList.add("is-open");
@@ -23,7 +23,7 @@ function openMenu() {
 function closeMenu() {
     document.body.classList.remove("menu-open");
     mnav?.classList.remove("is-open");
-    // ❗️бургер не чіпаємо тут (важливо)
+    // burger icon change back to normal
     burger?.classList.remove("is-active");
 }
 
@@ -36,7 +36,7 @@ function toggleMenu() {
     }
 }
 
-// MODAL
+// modal
 function getScrollbarWidth() {
     return window.innerWidth - document.documentElement.clientWidth;
 }
@@ -48,7 +48,7 @@ function openModal() {
     document.body.classList.add("modal-open", "no-scroll");
 
     document.body.style.paddingRight = scrollBarWidth + "px";
-    // ❗️бургер стає хрестиком
+    // burger icon change to ✕
     // burger?.classList.add("is-active");
 }
 
@@ -57,48 +57,46 @@ function closeModal() {
     document.body.classList.remove("modal-open", "no-scroll");
 
     document.body.style.paddingRight = "";
-    // ❗️бургер назад у полоски
+    // burger icon change back to normal
     burger?.classList.remove("is-active");
 }
 
-
-// BURGER CLICK
+// burger click
 burger?.addEventListener("click", () => {
-    // якщо відкрита модалка → закриваємо її
+    // if modal is open, close it instead of opening menu
     if (document.body.classList.contains("modal-open")) {
         closeModal();
         return;
     }
-    // інакше працюємо як меню
+    // otherwise, toggle menu
     toggleMenu();
 });
 
-
-// CONTACT BUTTONS
+// open modal click
 document.querySelectorAll('[data-modal]').forEach((btn) => {
     btn.addEventListener("click", (e) => {
         e.preventDefault();
 
         if (document.body.classList.contains("menu-open")) {
             closeMenu();
-            // ⏱ чекаємо поки меню закриється
+            // wait for menu to close (transition) and then open modal
             setTimeout(() => {
                 openModal();
-            }, 100); // під transition
+            }, 100); // transition
         } else {
             openModal();
         }
     });
 });
 
-// CLOSE MODAL (overlay + ✕)
+// close modal (overlay + ✕)
 modal?.addEventListener("click", (e) => {
     if (e.target.closest("[data-close]") || e.target === modal) {
         closeModal();
     }
 });
 
-// CLICK ON MENU LINKS
+// click on menu links
 mnav?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
         closeMenu();
@@ -106,42 +104,18 @@ mnav?.querySelectorAll("a").forEach((link) => {
 });
 
 form?.addEventListener("submit", (e) => {
-    e.preventDefault(); // ❗️ головне — прибирає скрол і перезавантаження
+    e.preventDefault(); 
 
-    // тут можеш додати fetch / відправку
+    // fetch / ajax request here
 
-    // очистка форми (опціонально)
+    // reset form
     form.reset();
 
-    // закриваємо модалку
+    // close modal
     closeModal();
 });
 
-///////////////////////////stats////////////////////////
-// const stats = document.querySelector(".stats");
-// const statsRow = document.querySelector(".stats__row");
-
-// let startScroll = null;
-
-// window.addEventListener("scroll", () => {
-//     const rect = stats.getBoundingClientRect();
-//     const windowHeight = window.innerHeight;
-
-//     // коли секція входить у viewport — фіксуємо старт
-//     if (rect.top <= windowHeight && startScroll === null) {
-//         startScroll = window.scrollY;
-//     }
-
-//     if (startScroll !== null) {
-//         const distance = window.scrollY - startScroll;
-
-//         const move = Math.max(0, Math.min(distance * 0.5, 320));
-
-//         statsRow.style.transform = `translateX(-${move}px)`;
-//     }
-// });
-
-///////////////////////////slider///////////////////////////
+// ANCHOR → slider 
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".solutions__dot");
 
@@ -214,11 +188,11 @@ dots.forEach((dot, i) => {
         const threshold = 50;
 
         if (diff < -threshold) {
-            // свайп вліво — наступна картка
+            // swipe left — next card
             order.push(order.shift());
             update();
         } else if (diff > threshold) {
-            // свайп вправо — попередня картка
+            // swipe right — previous card
             order.unshift(order.pop());
             update();
         }
@@ -235,7 +209,7 @@ dots.forEach((dot, i) => {
     solTrack.addEventListener("touchend", solEndDrag);
 })();
 
-///////////////////////////payments slider///////////////////////////
+// ANCHOR → slider payments 
 document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".payment__track");
     const dots = document.querySelectorAll(".payment__dot");
@@ -337,14 +311,14 @@ document.addEventListener("DOMContentLoaded", () => {
         moveCards(steps);
     }
 
-    // Інічіалізація
+    // initial setup
     const initialCards = getCards();
     initialCards.forEach((card, index) => {
         card.dataset.paymentIndex = index;
     });
     updatePaymentState();
 
-    // 🔥 DOTS - КЛІК ДЛЯ НАВІГАЦІЇ
+    //  dots click  
     dots.forEach((dot, dotIndex) => {
         dot.addEventListener("click", () => {
             goToCard(dotIndex);
@@ -363,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
         goToCard(Number(card.dataset.paymentIndex));
     });
     
-    // 🖱️ DRAG / SWIPE
+    //  drag / swipe
     function startDrag(e) {
         if (isAnimating) return;
 
@@ -411,18 +385,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 🖱️ mouse
+    // mouse
     track.addEventListener("mousedown", startDrag);
     window.addEventListener("mousemove", moveDrag);
     window.addEventListener("mouseup", endDrag);
 
-    // 📱 touch
+    // touch
     track.addEventListener("touchstart", startDrag);
     track.addEventListener("touchmove", moveDrag);
     track.addEventListener("touchend", endDrag);
 });
 
-///////////////////////////canvas animation business///////////////////////////
+// ANCHOR canvas animation business bg
 (function () {
     const canvas = document.querySelector(".business__canvas");
     const bg = document.querySelector(".business__bg");
@@ -445,14 +419,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const t = (ts - startTime) / 9000;
         const angle = t * Math.PI * 2;
 
-        // Вісімка
+        // 8
         const dy = Math.sin(angle) * 0.4;
         const dx = Math.sin(angle * 2) * 0.15;
 
         const W = canvas.width;
         const H = canvas.height;
 
-        // Центр градієнта рухається по вісімці
+        // center gradient position
         const cx = W / 2 + dx * W;
         const cy = H / 2 + dy * H;
 
@@ -462,29 +436,27 @@ document.addEventListener("DOMContentLoaded", () => {
             const bgRect = bg.getBoundingClientRect();
             const itemRect = item.getBoundingClientRect();
 
-            // Позиція картки відносно canvas
+            // position of item relative to bg
             const x = itemRect.left - bgRect.left;
             const y = itemRect.top - bgRect.top;
             const w = itemRect.width;
             const h = itemRect.height;
 
-            // border-radius залежно від розміру екрану
+            // border-radius
             const r = window.innerWidth <= 768 ? 16 : 24;
 
-            // Обрізаємо по формі картки
+            // slice canvas to item area
             ctx.save();
             ctx.beginPath();
             ctx.roundRect(x, y, w, h, r);
             ctx.clip();
 
-            // Єдиний градієнт відносно всього canvas
+            // gradient canvas
             const grad = ctx.createLinearGradient(cx - W * 0.6, cy - H * 0.6, cx + W * 0.6, cy + H * 0.6);
-            // grad.addColorStop(0, '#FC6701');
-            // grad.addColorStop(1, '#9B6FE8');
-            grad.addColorStop(0, "#fc650188"); // оранжевий
-            // grad.addColorStop(0.35, "#DE65F8"); // рожевий
-            grad.addColorStop(0.65, "#5f53bd7c"); // фіолетовий
-            grad.addColorStop(1, "#13044C"); // темно-синій
+            
+            grad.addColorStop(0, "#fc650188"); 
+            grad.addColorStop(0.65, "#5f53bd7c"); 
+            grad.addColorStop(1, "#13044C"); 
 
             ctx.fillStyle = grad;
             ctx.fillRect(x, y, w, h);
@@ -498,19 +470,19 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(tick);
 })();
 
-///////////////////////////faq///////////////////////////
+// ANCHOR faq
 document.querySelectorAll(".faq__question").forEach((btn) => {
     btn.addEventListener("click", () => {
         const item = btn.closest(".faq__item");
         const isOpen = item.classList.contains("active");
 
-        // закриваємо всі
+        // close all
         document.querySelectorAll(".faq__item").forEach((el) => {
             el.classList.remove("active");
             el.querySelector(".faq__question").setAttribute("aria-expanded", "false");
         });
 
-        // відкриваємо якщо був закритий
+        // open clicked if it was closed
         if (!isOpen) {
             item.classList.add("active");
             btn.setAttribute("aria-expanded", "true");
@@ -518,32 +490,31 @@ document.querySelectorAll(".faq__question").forEach((btn) => {
     });
 });
 
-
-///////////////////////////scroll to top button///////////////////////////
+// ANCHOR scroll to top button
 const btn = document.getElementById('scrollTopBtn');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
 
-  // не показываем в самом верху
+  // don't show button if we're near the top
   if (currentScroll < 200) {
     btn.classList.remove('show');
     return;
   }
 
   if (currentScroll < lastScroll) {
-    // скролл вверх
+    // scroll up
     btn.classList.add('show');
   } else {
-    // скролл вниз
+    // scroll down
     btn.classList.remove('show');
   }
 
   lastScroll = currentScroll;
 });
 
-// клик — вверх
+// smooth scroll to top
 btn.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
