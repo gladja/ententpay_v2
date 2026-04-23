@@ -136,18 +136,6 @@ body {
     }
 }
 
-/* small desktop */
-@media (min-width: 980px) {
-}
-
-/* large desktop */
-@media (min-width: 1280px) {
-}
-
-/* old */
-@media (max-width: 980px) {
-}
-
 /* background */
 .hero {
     background: url(../assets/img/main-bg-m.webp) bottom center/cover no-repeat;
@@ -567,7 +555,7 @@ body.menu-open {
         rgba(96, 83, 189, 0.65);
 }
 
-/* 🔥 важливо */
+/* no scroll */
 .no-scroll {
     overflow: hidden;
 }
@@ -979,11 +967,6 @@ body.menu-open {
 .card--center.active .card__text {
     width: 300px;
     margin-bottom: 115px;
-
-    /* @media (min-width: 980px) {
-        width: 300px;
-        margin-bottom: 115px;
-    } */
 }
 
 .card--right {
@@ -1345,10 +1328,10 @@ body.menu-open {
     left: 0;
     right: 0;
 
-    height: 110px; /* 🔥 регулює скільки видно */
+    height: 110px; /* регулює скільки видно */
 
     @media (min-width: 980px) {
-        height: 80px; /* 🔥 регулює скільки видно */
+        height: 80px; /* регулює скільки видно */
     }
 
     overflow: hidden;
@@ -1360,11 +1343,11 @@ body.menu-open {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.3);
 
-    transform: translateY(-10%); /* 🔥 піднімаємо щоб обрізати */
+    transform: translateY(-10%); /*  піднімаємо щоб обрізати */
 
     @media (min-width: 980px) {
         font-size: 130px;
-        /* transform: translateY(-10%); 🔥 піднімаємо щоб обрізати */
+        /* transform: translateY(-10%); піднімаємо щоб обрізати */
     }
 }
 
