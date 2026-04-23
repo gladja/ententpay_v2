@@ -654,6 +654,9 @@ body.menu-open {
     display: inline-block;
     width: 295px;
     height: 80px;
+    padding: 0;
+    background: none;
+    border: none;
 
     @media (min-width: 980px) {
         width: 240px;

@@ -54,7 +54,9 @@
                             <button class="lang__btn" type="button">En</button>
                         </div>
 
-                        <a class="btn btn--primary none" href="#contacts-modal"> Contact us </a>
+                        <button class="btn btn--primary none" type="button" data-modal="contact-modal">
+                            Contact us
+                        </button>
 
                         <button class="burger" type="button" aria-label="Open menu" data-burger>
                             <span></span><span></span><span></span>
@@ -80,7 +82,9 @@
                             <a class="hover-text" href="#contacts">Contacts</a>
                         </li>
                         <li>
-                            <a class="btn btn--primary" href="#contacts-modal">Contact us</a>
+                            <button class="btn btn--primary" type="button" data-modal="contact-modal">
+                                Contact us
+                            </button>
                         </li>
                         <li>
                             <div class="lang">
@@ -103,7 +107,7 @@
                         payment assistant
                     </h1>
                     <div class="hero__media">
-                        <a class="btn-lottie hero__btn" href="#contacts-modal" aria-label="Get started">
+                        <button class="btn-lottie hero__btn" type="button" data-modal="contact-modal" aria-label="Get started">
                             <span id="startBtnAnim"></span>
                         </a>
                     </div>
@@ -160,8 +164,12 @@
                         </div>
 
                         <div class="solutions__buttons">
-                            <a href="#contacts-modal" class="btn btn--primary">Start now!</a>
-                            <a href="#contacts-modal" class="btn btn--ghost">Contact us</a>
+                            <button class="btn btn--primary" type="button" data-modal="contact-modal">
+                                Start now!
+                            </button>
+                            <button class="btn btn--ghost" type="button" data-modal="contact-modal">
+                                Contact us
+                            </button>
                         </div>
 
                         <div class="solutions__slider">
@@ -313,7 +321,9 @@
                     </ul>
 
                     <div class="integration__cta">
-                        <a href="#contacts-modal" class="btn btn--primary">Start now!</a>
+                        <button class="btn btn--primary" type="button" data-modal="contact-modal">
+                            Start now!
+                        </button>
                     </div>
                 </div>
             </section>
@@ -536,7 +546,7 @@
                 </form>
             </div>
         </div>
-        
+
         <button class="btn btn--primary scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
             <span class="scroll-top__icon">
                 <img src="./assets/img/arrow.svg" alt="arrow up" title="arrow up" />

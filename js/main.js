@@ -10,7 +10,7 @@ lottie.loadAnimation({
 ///////////////////////////burger menu//////////////////////
 const burger = document.querySelector("[data-burger]");
 const mnav = document.querySelector("[data-mnav]");
-const modal = document.querySelector("#contact-modal");
+const modal = document.getElementById("contact-modal");
 const form = document.querySelector(".contact-form");
 
 // MENU
@@ -24,6 +24,7 @@ function closeMenu() {
     document.body.classList.remove("menu-open");
     mnav?.classList.remove("is-open");
     // ❗️бургер не чіпаємо тут (важливо)
+    burger?.classList.remove("is-active");
 }
 
 function toggleMenu() {
@@ -48,7 +49,7 @@ function openModal() {
 
     document.body.style.paddingRight = scrollBarWidth + "px";
     // ❗️бургер стає хрестиком
-    burger?.classList.add("is-active");
+    // burger?.classList.add("is-active");
 }
 
 function closeModal() {
@@ -74,7 +75,7 @@ burger?.addEventListener("click", () => {
 
 
 // CONTACT BUTTONS
-document.querySelectorAll('a[href="#contacts-modal"]').forEach((btn) => {
+document.querySelectorAll('[data-modal]').forEach((btn) => {
     btn.addEventListener("click", (e) => {
         e.preventDefault();
 
